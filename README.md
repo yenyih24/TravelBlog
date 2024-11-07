@@ -1,12 +1,18 @@
 # Assignment 2
 
-222
+旅遊部落格
+filter: 五大洲
+search function
+建立database, 郵箱,username,密碼
 
-1234567
+blog form: 
+-title
+-state
+-country
+-content
 
-add new file-xxy
+留言板
+username:
+content
 
-
-abc
-
-"hello world"
+html, css, JS, PHP,Xampp,database
