@@ -1,0 +1,39 @@
+
+/*Set the warning font color*/
+.warning {
+    color: red;
+  }
+
+  /*Set the info font color*/
+.info {
+    color:blue;
+}
+
+/* Set the width to 80% of the viewport width, and center the form */
+.formcontainer{
+    width: 80vw; 
+    margin: 0 auto; 
+  }
+
+/* Set labels within the .textfield class to display as block elements, and apply margin to the label elements */
+.textfield label {
+    display: block;
+    margin: 0.5rem 0;
+  }  
+
+/* Set input elements within the .textfield class to display as block elements, with 90% width, minimum height, and margin */
+.textfield input
+{
+    display: block;
+    width:90%; /* Set the width of the input elements to 90% of their parent container */
+    min-height: 1.5em;
+    margin:5px 0;
+}
+
+button{
+    background:skyblue;
+}
+
+.reset{
+    background: palevioletred;
+}
