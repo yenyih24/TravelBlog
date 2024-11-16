@@ -8,22 +8,22 @@ body {
   header {
     padding: 10px 0;
     color: rgb(105, 95, 95); /*make text color*/
-    text-align: center; /* Center text */
+    border-bottom: 2px solid rgb(164, 145, 145); /* 設定邊框為下邊、2像素、黑色 */
+    padding: 10px; /* 增加一些內邊距 */
+    
   }
   
   /* Make sure the website’s title (<h1>) scales appropriately without causing layout issues on smaller screens by using descendant selector. */
   header h1 {
-    margin: 20px 0; /* Top and bottom margin 20px, left and right margin 0 */
+    margin: 20px 50px; /* Top and bottom margin 20px, left and right margin 0 */
     font-size: 3em; /* Font size set to three times the parent element's font size */
+    text-align: left; /* Center text */
   }
   
+  /*header nav */
   nav {
     display: flex; /* Use flexbox layout for navigation */
     justify-content: center; /* Center navigation items */
-  }
-  
-  p{
-    line-height: 2;
   }
   
   /* Unordered list inside the nav */
@@ -44,11 +44,13 @@ body {
   }
   
   a:hover {
-    background-color: rgb(133, 130, 133);
+    background-color: rgb(176, 225, 235);
     border-radius: 30px; /* Round the corners of the element */
   }
+
+
   
-  .aside-container {
+  .big-container {
     font-family: helvetica, arial, sans-serif;
     display: grid;
     grid-template-columns: 1fr 3fr; /* Create responsive columns */
@@ -65,9 +67,6 @@ body {
     margin: 3px 0;
   }
   
-  .clear {
-    list-style-type: none; /* Remove default bullet points */
-  }
   
   aside {
     display: flex;
@@ -89,18 +88,6 @@ body {
     color: rgb(121, 81, 81);
     text-decoration: none; /* Remove underline from links */
     padding: 10px 15px; /* Padding for area */
-  }
-
-
-  
-  label {
-    display: block; /* Display label as a block element */
-    margin: 5px 0;
-  }
-  
-  .link a {
-    color: rgb(121, 81, 81);
-    text-decoration: none;
   }
 
   footer {
