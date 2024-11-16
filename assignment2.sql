@@ -31,3 +31,6 @@ CREATE TABLE IF NOT EXISTS `post` (
   PRIMARY KEY (`post_id`),                    
   FOREIGN KEY (`user_id`) REFERENCES `account`(`id`) 
 ) ENGINE=InnoDB;
+
+INSERT INTO post(user_id, title, content) VALUES
+(1, 'Test 1', 'Test laaaaaaa');
