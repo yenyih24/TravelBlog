@@ -14,12 +14,19 @@
   <div class="New Post">
     <h1>Create New Post</h1>
 
-    <form action='post.php' method="POST">
+    <form action='post.php' method="POST" enctype="multipart/form-data"> <!-- allow user to upload files (pictures) -->
+      
     
       <dl>
         <dt>Title</dt>
         <dd><input type="text" name="title" /></dd>
       </dl>
+
+      <dl>
+        <dt>picture</dt>
+      <input type="file" name="picture" accept="image/*" /></dd>
+      </dl>
+
       <dl>
         <dt>Content</dt>
         <dd><textarea id="post_content" name="post_content"></textarea></dd>
