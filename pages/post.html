@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet"  href="style.css" />
+</head>
+<body>
+  
+<?php include 'headerEm.php'; ?>
+
+<div id="content">
+
+  <a class="back-link" href="<?php echo 'index.php'; ?>"> Back to List</a>
+
+  <div class="New Post">
+    <h1>Create New Post</h1>
+
+    <form action='post.php' method="POST">
+    
+      <dl>
+        <dt>Title</dt>
+        <dd><input type="text" name="title" /></dd>
+      </dl>
+      <dl>
+        <dt>Content</dt>
+        <dd><textarea id="post_content" name="post_content"></textarea></dd>
+      </dl>
+   
+      <div id="operations">
+        <input type="submit" value="Create Post" />
+      </div>
+    </form>
+
+
+  </div>
+
+</div>
+
+<?php include 'footerEm.php'; ?>
