@@ -8,68 +8,71 @@
   </head>
 
   <body>
-    <header>
-      <h1>Travel Blog</h1>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li> <!-- Link to Home page -->
-          <li><a href="login.html">Login in</a></li> <!-- Link to Login page -->
-
-          <main>
+  <?php include './headerTB.php'; ?>
+  <main>
   <?php
-  //conect to the datbase
-
-  require_once('database.php');
-  include "headerEm.php";
+  //connect to the database
+  require_once('../server/database.php');
   $db = db_connect();
+
   //access URL parameter
-  if (!isset($_GET['id'])) { //check if we get the id
-    header("Location:  index.php");
+  if (!isset($_GET['id']) || !is_numeric($_GET['id'])) { //check if we get the id
+    header("Location: index.php"); // 如果 id 無效，返回主頁
   }
+
   $id = $_GET['id'];
 
-  //prepare your query
-  $sql = "SELECT * FROM employees WHERE id= '$id'";
+  // 查詢博客文章詳細資訊
+  $sql = "SELECT p.title, p.content, p.image_path, p.created_at, a.username 
+          FROM post p 
+          JOIN account a ON p.user_id = a.id 
+          WHERE p.post_id = ?";
+  $stmt = mysqli_prepare($db, $sql);
+  mysqli_stmt_bind_param($stmt, 'i', $id); // 綁定 id 參數
+  mysqli_stmt_execute($stmt);
+  $result_set = mysqli_stmt_get_result($stmt);
 
-  $result_set = mysqli_query($db, $sql);
+  // 檢查是否有結果
+  if (!$result_set || mysqli_num_rows($result_set) === 0) {
+    echo "<p>No post found with ID: $id</p>";
+    echo '<a href="index.php">Back to List</a>';
+    exit();
+  }
 
-  $result = mysqli_fetch_assoc($result_set);
-
+  $post = mysqli_fetch_assoc($result_set);
   ?>
-  <!-- display the employee data -->
+
+
+<!-- display the blog data -->
   <div id="content">
 
-    <a class="back-link" href="index.php"> Back to List</a>
-
     <div class="page show">
-
-      <h1> <?php echo $result['name']; ?></h1>
-
+      <h1><?php echo ($post['title']); ?></h1> <!-- 顯示文章標題 -->
       <div class="attributes">
         <dl>
-          <dt>Employee Name</dt>
-          <dd><?php echo $result['name']; ?></dd>
+          <dt>Author</dt>
+          <dd><?php echo ($post['username']); ?></dd>
         </dl>
         <dl>
-          <dt>Employee address</dt>
-          <dd><?php echo $result['address']; ?></dd>
+          <dt>Content</dt>
+          <dd><?php echo ($post['content']); ?></dd> <!-- 顯示文章內容 -->
         </dl>
+        <?php if (!empty($post['image_path'])): ?> <!-- 如果有圖片路徑 -->
         <dl>
-          <dt>Employee salary</dt>
-          <dd><?php echo $result['salary']; ?></dd>
+          <dt>Image</dt>
+          <dd><img src="<?php echo ($post['image_path']); ?>" alt="Post Image"></dd>
         </dl>
+        <?php endif; ?>
         <dl>
-
+          <dt>Created At</dt>
+          <dd><?php echo ($post['created_at']); ?></dd> <!-- 顯示建立時間 -->
+        </dl>
       </div>
-
-
     </div>
-
   </div>
-
 </main>
 
-  <?php include 'footerEm.php'; ?>
+  <?php include 'footerTB.php'; ?>
 </body>
 
 </html>

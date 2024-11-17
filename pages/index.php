@@ -11,7 +11,7 @@
   <body>
     <?php include 'headerTB.php'; ?>
 
-    <div class="big-container">
+<div class="big-container">
       <aside>
         <ul>
           <li><a href="post.php">New Post</a></li>
@@ -38,45 +38,20 @@ if (!$result_set) {
 }
 ?>
 
-<div id="content">
-  <div class="posts listing">
-    <h1>Posts</h1>
 
-    <div class="actions">
-      <a class="action" href="new_post.php">Create New Post</a>
-    </div>
+    <div class="blog">
 
-    <table class="list">
-      <tr>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Content</th>
-        <th>Author</th>
-        <th>Created At</th>
-        <th>&nbsp;</th>
-        <th>&nbsp;</th>
-        <th>&nbsp;</th>
-      </tr>
-      <!-- Process and display the results -->
-      <?php while ($post = mysqli_fetch_assoc($result_set)) { ?>
-        <tr>
-          <td><?php echo $post['post_id']; ?></td>
-          <td><?php echo $post['title']; ?></td>
-          <td><?php echo $post['content']; ?></td>
-          <td><?php echo $post['username']; ?></td>
-          <td><?php echo $post['created_at']; ?></td>
-          <td><a class="action" href="<?php echo "view_post.php?id=" . $post['post_id']; ?>">View</a></td>
-          <td><a class="action" href="<?php echo "edit_post.php?id=" . $post['post_id']; ?>">Edit</a></td>
-          <td><a class="action" href="<?php echo "delete_post.php?id=" . $post['post_id']; ?>">Delete</a></td>
-        </tr>
-      <?php } ?>
-    </table>
-  </div>
-</div>
+    <?php while ($post = mysqli_fetch_assoc($result_set)) { ?>
 
+    <p><?php echo $post['title']; ?><p>
+    <p><?php echo $post['content']; ?><p>
 
+     <!-- send the id as parameter -->
+     <p><a class="action" href="<?php echo "blog.php?id=" . $post['post_id']; ?>">View</a></p>
+          <p><a class="action" href="<?php echo "edit.php?id=" . $post['post_id']; ?>">Edit</a></p>
+          <p><a class="action" href="<?php echo "delete.php?id=" . $post['post_id']; ?>">Delete</a></p>
+          <?php } ?>
 
-        </div>
 
         <?php include 'footerTB.php'; ?>
 
