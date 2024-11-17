@@ -31,19 +31,20 @@
 
       <dl>
         <dt>State</dt>
-          <select name="state" id="state">
-          <option value="africa">Africa</option>
-          <option value="asia">Asia</option>
-          <option value="europe">Europe</option>
-          <option value="north_america">North America</option>
-          <option value="south_america">South America</option>
-          <option value="oceania">Oceania</option>
-          </select>
+        <select name="state" id="state">
+          <option value="Africa">Africa</option>
+          <option value="Asia">Asia</option>
+          <option value="Europe">Europe</option>
+          <option value="North America">North America</option>
+          <option value="South America">South America</option>
+          <option value="Oceania">Oceania</option>
+        </select>
+
       </dl>
 
       <dl>
         <dt>Country</dt>
-        <dd><input type="text" name="name" /></dd>
+        <dd><input type="text" name="country" /></dd>
       </dl>
 
       <dl>
