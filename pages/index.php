@@ -27,7 +27,7 @@ require_once('../server/database.php');
 
 $db = db_connect(); // Connect to the database
 
-$sql = "SELECT p.post_id, p.title, p.content, p.created_at, a.username ";
+$sql = "SELECT p.post_id, p.title, p.state, p.country, p.content, p.created_at, a.username ";
 $sql .= "FROM post p ";
 $sql .= "JOIN account a ON p.user_id = a.id "; // Join with the account table to fetch username
 $sql .= "ORDER BY p.created_at DESC"; // Order by the most recent posts
@@ -44,6 +44,8 @@ if (!$result_set) {
     <?php while ($post = mysqli_fetch_assoc($result_set)) { ?>
 
     <p><?php echo $post['title']; ?><p>
+    <p><?php echo $post['state']; ?><p>
+    <p><?php echo $post['country']; ?><p>
     <p><?php echo $post['content']; ?><p>
 
      <!-- send the id as parameter -->

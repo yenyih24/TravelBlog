@@ -23,7 +23,7 @@
   $id = $_GET['id'];
 
   // 查詢博客文章詳細資訊
-  $sql = "SELECT p.title, p.content, p.image_path, p.created_at, a.username 
+  $sql = "SELECT p.title, p.content, p.state, p.country, p.image_path, p.created_at, a.username 
           FROM post p 
           JOIN account a ON p.user_id = a.id 
           WHERE p.post_id = ?";
