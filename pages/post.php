@@ -1,63 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name=" description " content=" Assignment2 " />
-  <!-- Add authorship metadata and link CSS and JS files -->
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // 接收表單數據
+    $title = $_POST['title'];
+    $state = $_POST['state'];
+    $country = $_POST['name'];
+    $content = $_POST['post_content'];
+    $imagePath = null;
 
-  <title>Assignment2 - Travel blog- New post</title>
-  <!-- <script src="script.js" defer></script> -->
-  
-  <link rel="stylesheet" type="text/css" href="../css/form.css">
-</head>
-<body>
-  
-<?php include './headerTB.php'; ?>
+    // 處理圖片上傳
+    if (isset($_FILES['picture']) && $_FILES['picture']['error'] === UPLOAD_ERR_OK) {
+        $uploadDir = 'uploads/images/';
+        $fileName = basename($_FILES['picture']['name']);
+        $uploadFile = $uploadDir . $fileName;
 
-<div id="content">
+        if (!is_dir($uploadDir)) {
+            mkdir($uploadDir, 0777, true); // 創建目錄
+        }
 
-  <a class="back-link" href="<?php echo 'index.php'; ?>"> Back to List</a>
+        if (move_uploaded_file($_FILES['picture']['tmp_name'], $uploadFile)) {
+            $imagePath = $uploadFile; // 保存圖片路徑
+        }
+    }
 
-  <div class="New Post">
-    <h1>Create New Post</h1>
+    // 將數據保存到資料庫
+    $conn = new mysqli('localhost', 'root', '', 'blog');
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
 
-    <form action='post.php' method="POST" enctype="multipart/form-data"> <!-- allow user to upload files (pictures) -->
-      
-    
-      <dl>
-        <dt>Title</dt>
-        <dd><input type="text" name="title" /></dd>
-      </dl>
+    $stmt = $conn->prepare("INSERT INTO post (user_id, title, state, country, content, image_path) VALUES (?, ?, ?, ?, ?, ?)");
+    $userId = 1; // 假設當前用戶 ID
+    $stmt->bind_param("isssss", $userId, $title, $state, $country, $content, $imagePath);
 
-      <dl>
-        <dt>State</dt>
-        <dd><input type="text" name="address"  /></dd>
-      </dl>
+    if ($stmt->execute()) {
+        echo "Post created successfully!";
+    } else {
+        echo "Error: " . $stmt->error;
+    }
 
-      <dl>
-        <dt>Country</dt>
-        <dd><input type="text" name="name" /></dd>
-      </dl>
-
-      <dl>
-        <dt>Picture</dt>
-      <input type="file" name="picture" accept="image/*" /></dd>
-      </dl>
-
-      <dl>
-        <dt>Content</dt>
-        <dd><textarea id="post_content" name="post_content"></textarea></dd>
-      </dl>
-   
-      <div id="operations">
-        <input type="submit" value="Create Post" />
-      </div>
-    </form>
-
-
-  </div>
-
-</div>
-
-<?php include 'footerTB.php'; ?>
+    $stmt->close();
+    $conn->close();
+}
+?>
