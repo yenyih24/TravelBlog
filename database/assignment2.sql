@@ -6,6 +6,7 @@ FLUSH PRIVILEGES;
 USE assignment2;
 
 DROP TABLE IF EXISTS account;
+DROP TABLE IF EXISTS post;
 
 CREATE TABLE IF NOT EXISTS `account` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -26,11 +27,13 @@ CREATE TABLE IF NOT EXISTS `post` (
   `user_id` INT NOT NULL,                   
   `title` VARCHAR(255) NOT NULL,              -- 文章標題
   `content` TEXT NOT NULL,                    -- 文章內容
+  `state` ENUM('Africa', 'Asia', 'Europe', 'North America', 'South America', 'Oceania') NOT NULL,
+  `country` VARCHAR(50) NOT NULL,
   `image_path` VARCHAR(255) DEFAULT NULL,     -- 圖片檔案路徑
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 文章建立時間
   PRIMARY KEY (`post_id`),                    
   FOREIGN KEY (`user_id`) REFERENCES `account`(`id`) 
 ) ENGINE=InnoDB;
 
-INSERT INTO post(user_id, title, content) VALUES
-(1, 'Test 1', 'Test laaaaaaa');
+INSERT INTO post(user_id, title, content, state, country) VALUES
+(1, 'Test 1', 'Test laaaaaaa', 'Asia', 'Japan');
