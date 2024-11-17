@@ -36,7 +36,7 @@
       </dl>
 
       <dl>
-        <dt>Date</dt>
+        <dt>Country</dt>
         <dd><input type="text" name="name" /></dd>
       </dl>
 

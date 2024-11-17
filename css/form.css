@@ -10,7 +10,7 @@
 }
 
 /* Set the width to 80% of the viewport width, and center the form */
-.formcontainer{
+.form-container{
     width: 80vw; 
     margin: 0 auto; 
   }

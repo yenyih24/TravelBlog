@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="../css/form.css">
 </head>
 <body>
-    <div class="formcontainer">
+    <div class="form-container">
         <h1>Customer Registration Form</h1>
         <hr>
         <form name="registration" 
