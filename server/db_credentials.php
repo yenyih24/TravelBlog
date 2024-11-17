@@ -3,5 +3,5 @@
 define("DB_SERVER", "localhost");
 define("DB_USER", "appuser");
 define("DB_PASS", "password");
-define("DB_NAME", "demo");
+define("DB_NAME", "assignment2");
 

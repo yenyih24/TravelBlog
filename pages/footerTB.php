@@ -13,7 +13,7 @@
 </html>
 <footer>
 
-  &copy; <?php echo date('Y'); ?> Employee System
+  &copy; <?php echo date('Y'); ?> Copyright
 </footer>
 
 </body>

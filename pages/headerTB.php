@@ -20,9 +20,3 @@
       </nav>
 
   </header>
-
-  <nav>
-    <ul>
-      <li><a href="index.php">Menu</a></li>
-    </ul>
-  </nav>
