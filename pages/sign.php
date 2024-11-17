@@ -10,8 +10,13 @@
     <!-- <script src="script.js" defer></script> -->
     <script src="../scripts/script.js" defer></script>
     <link rel="stylesheet" type="text/css" href="../css/form.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+
 </head>
 <body>
+
+<?php include 'headerTB.php'; ?>
+
     <div class="form-container">
         <h1>Customer Registration Form</h1>
         <hr>
@@ -56,6 +61,8 @@
 
         </form>
     </div>
+    <?php include 'footerTB.php'; ?>
 
 </body>
+
 </html>
