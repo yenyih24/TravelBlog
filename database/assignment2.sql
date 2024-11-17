@@ -35,5 +35,5 @@ CREATE TABLE IF NOT EXISTS `post` (
   FOREIGN KEY (`user_id`) REFERENCES `account`(`id`) 
 ) ENGINE=InnoDB;
 
-INSERT INTO post(user_id, title, content, state, country) VALUES
+INSERT INTO `post`(`user_id`, `title`, `content`, `state`, `country`) VALUES
 (1, 'Test 1', 'Test laaaaaaa', 'Asia', 'Japan');
