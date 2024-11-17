@@ -14,7 +14,7 @@
 <div class="big-container">
       <aside>
         <ul>
-          <li><a href="post.php">New Post</a></li>
+          <li><a href="create.php">New Post</a></li>
         </ul>
 
       </aside>
@@ -56,6 +56,6 @@ if (!$result_set) {
 
 
         <?php include 'footerTB.php'; ?>
-
+    </div>
   </body>
 </html>

@@ -1,4 +1,10 @@
 <?php
+
+require_once('database.php');
+include "headerEm.php";
+$db = db_connect();
+
+// Handle form values sent by post.php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // 接收表單數據
     $title = $_POST['title'];
