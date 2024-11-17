@@ -22,7 +22,7 @@
   <div class="New Post">
     <h1>Create New Post</h1>
 
-    <form action='post.php' method="POST" enctype="multipart/form-data"> <!-- allow user to upload files (pictures) -->
+    <form action='create_post.php' method="POST" enctype="multipart/form-data"> <!-- allow user to upload files (pictures) -->
       
     
       <dl>
