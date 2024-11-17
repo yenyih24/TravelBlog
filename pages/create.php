@@ -10,6 +10,7 @@
   <!-- <script src="script.js" defer></script> -->
   
   <link rel="stylesheet" type="text/css" href="../css/form.css">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body>
   
