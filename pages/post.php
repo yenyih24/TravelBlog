@@ -32,12 +32,12 @@
 
       <dl>
         <dt>State</dt>
-        <dd><input type="text" name="address"  /></dd>
+        <dd><input type="text" name="state"  /></dd>
       </dl>
 
       <dl>
         <dt>Country</dt>
-        <dd><input type="text" name="name" /></dd>
+        <dd><input type="text" name="country" /></dd>
       </dl>
 
       <dl>
