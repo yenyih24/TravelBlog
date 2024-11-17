@@ -54,8 +54,10 @@
           <dd><?php echo ($post['username']); ?></dd>
         </dl>
         <dl>
-          <dt>Content</dt>
-          <dd><?php echo ($post['content']); ?></dd> <!-- 顯示文章內容 -->
+          <?php echo ($post['country']); ?> <!-- 顯示國家 -->
+        </dl>
+        <dl>
+          <?php echo ($post['state']); ?> <!-- 顯示state -->
         </dl>
         <?php if (!empty($post['image_path'])): ?> <!-- 如果有圖片路徑 -->
         <dl>
@@ -63,6 +65,11 @@
           <dd><img src="<?php echo ($post['image_path']); ?>" alt="Post Image"></dd>
         </dl>
         <?php endif; ?>
+        <dl>
+          <dt>Content</dt>
+          <dd><?php echo ($post['content']); ?></dd> <!-- 顯示文章內容 -->
+        </dl>
+
         <dl>
           <dt>Created At</dt>
           <dd><?php echo ($post['created_at']); ?></dd> <!-- 顯示建立時間 -->
