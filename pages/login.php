@@ -12,7 +12,32 @@
     <link rel="stylesheet" type="text/css" href="../css/form.css">
 </head>
 
-<?php
-  
+<body>
 <?php include 'headerTB.php'; ?>
-<?php include 'footerTB.php'; ?>
+
+    <div class="form-container">
+        <h1>User Login In</h1>
+        <hr>
+        <form name="login" 
+        >
+        <div class="textfield">
+                <label for="login">User Name: </label>
+                <input type="text" name="login" id="login" placeholder="User name">
+            </div>
+
+            <div class="textfield">
+                <label for="pass">Password: </label>
+                <input type="password" name="pass" id="pass" placeholder="Password">
+            </div>
+
+            <button type="submit">Sign-Up</button>
+            <button class="reset" type="reset">Reset</button>
+
+            <p>If you don't have account, <a href="sign.php">Sign up</a></P>
+
+        </form>
+    </div>
+
+    <?php include 'footerTB.php'; ?>
+</body>
+
