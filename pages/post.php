@@ -1,63 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name=" description " content=" Assignment2 " />
-  <!-- Add authorship metadata and link CSS and JS files -->
+<?php
+// 檢查是否有表單提交
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // 1. 接收表單數據
+    $title = $_POST['title'];
+    $state = $_POST['state'];
+    $country = $_POST['name'];
+    $content = $_POST['post_content'];
+    $imagePath = null; // 預設為 NULL
+    $userId = 1; // 假設當前登入用戶的 ID 為 1
 
-  <title>Assignment2 - Travel blog- New post</title>
-  <!-- <script src="script.js" defer></script> -->
-  
-  <link rel="stylesheet" type="text/css" href="../css/form.css">
-</head>
-<body>
-  
-<?php include './headerTB.php'; ?>
+    // 2. 處理圖片上傳
+    if (isset($_FILES['picture']) && $_FILES['picture']['error'] === UPLOAD_ERR_OK) {
+        $uploadDir = 'uploads/images/'; // 圖片上傳目錄
+        $fileName = basename($_FILES['picture']['name']);
+        $uploadFile = $uploadDir . $fileName;
 
-<div id="content">
+        // 確保目錄存在
+        if (!is_dir($uploadDir)) {
+            mkdir($uploadDir, 0777, true);
+        }
 
-  <a class="back-link" href="<?php echo 'index.php'; ?>"> Back to List</a>
+        // 移動上傳文件到目標目錄
+        if (move_uploaded_file($_FILES['picture']['tmp_name'], $uploadFile)) {
+            $imagePath = $uploadFile; // 保存圖片路徑
+        } else {
+            die("Failed to upload picture.");
+        }
+    }
 
-  <div class="New Post">
-    <h1>Create New Post</h1>
+    // 3. 連接資料庫
+    $conn = new mysqli('localhost', 'root', '', 'blog');
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
 
-    <form action='post.php' method="POST" enctype="multipart/form-data"> <!-- allow user to upload files (pictures) -->
-      
-    
-      <dl>
-        <dt>Title</dt>
-        <dd><input type="text" name="title" /></dd>
-      </dl>
+    // 4. 插入數據到資料表
+    $stmt = $conn->prepare("INSERT INTO post (user_id, title, state, country, content, image_path) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("isssss", $userId, $title, $state, $country, $content, $imagePath);
 
-      <dl>
-        <dt>State</dt>
-        <dd><input type="text" name="address"  /></dd>
-      </dl>
+    if ($stmt->execute()) {
+        echo "Post created successfully!";
+    } else {
+        echo "Error: " . $stmt->error;
+    }
 
-      <dl>
-        <dt>Country</dt>
-        <dd><input type="text" name="name" /></dd>
-      </dl>
-
-      <dl>
-        <dt>Picture</dt>
-      <input type="file" name="picture" accept="image/*" /></dd>
-      </dl>
-
-      <dl>
-        <dt>Content</dt>
-        <dd><textarea id="post_content" name="post_content"></textarea></dd>
-      </dl>
-   
-      <div id="operations">
-        <input type="submit" value="Create Post" />
-      </div>
-    </form>
-
-
-  </div>
-
-</div>
-
-<?php include 'footerTB.php'; ?>
+    // 5. 關閉連接
+    $stmt->close();
+    $conn->close();
+} else {
+    echo "Invalid request.";
+}
+?>
