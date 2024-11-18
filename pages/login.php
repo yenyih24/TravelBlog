@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email'] ?? '');
@@ -30,10 +30,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // 驗證密碼
     if ($password === $user['password']) {
-        // 使用 JavaScript 彈出訊息並跳轉
+        // 設置 Session 狀態
+        $_SESSION['logged_in'] = true; // 標記為已登入
+        $_SESSION['username'] = $user['username']; // 保存用戶名
+
+        // 跳轉到首頁
         echo "<script>
                 alert('Login successful! Welcome, {$user['username']}');
-                window.location.href = 'index.php'; // 跳轉到首頁
+                window.location.href = 'index.php';
               </script>";
         exit;
     } else {
