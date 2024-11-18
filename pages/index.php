@@ -41,19 +41,29 @@ if (!$result_set) {
 
     <div class="blog">
 
-    <?php while ($post = mysqli_fetch_assoc($result_set)) { ?>
+    <?php while ($post = mysqli_fetch_assoc($result_set)) { 
+      ?>
 
-    <p><?php echo $post['title']; ?><p>
+    <p><?php echo $post['title']; ?><p></div>
+    
     <p><?php echo $post['state']; ?><p>
+    
     <p><?php echo $post['country']; ?><p>
+    
     <p><?php echo $post['content']; ?><p>
 
      <!-- send the id as parameter -->
-     <p><a class="action" href="<?php echo "blog.php?id=" . $post['post_id']; ?>">View</a></p>
-          <p><a class="action" href="<?php echo "edit.php?id=" . $post['post_id']; ?>">Edit</a></p>
-          <p><a class="action" href="<?php echo "delete.php?id=" . $post['post_id']; ?>">Delete</a></p>
-          <?php } ?>
+      <div class="main_link">
+      <ul>
+     <li><a class="action" href="<?php echo "blog.php?id=" . $post['post_id']; ?>">View</a></li>
+     <li><a class="action" href="<?php echo "edit.php?id=" . $post['post_id']; ?>">Edit</a></li>
+     <li><a class="action" href="<?php echo "delete.php?id=" . $post['post_id']; ?>">Delete</a></li>
+          <ul>
+      </div>
 
+          <?php } ?>
+          </div>
+        </div>
 
         <?php include 'footerTB.php'; ?>
     </div>

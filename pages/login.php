@@ -8,7 +8,7 @@
 
     <title>Assignment2 - Travel blog- Login page</title>
     <!-- <script src="script.js" defer></script> -->
-    <script src="../scripts/script.js" defer></script>
+    <script src="../scripts/script.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/form.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>

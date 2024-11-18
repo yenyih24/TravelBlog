@@ -91,6 +91,28 @@ body {
     padding: 10px 15px; /* Padding for area */
   }
 
+  .main_link {
+    display: flex; /* Use flexbox layout for main_link */
+    justify-content: center; /* Center navigation items */
+  }
+  
+  /* Unordered list inside the nav */
+  .main_link ul {
+    list-style-type: none; /* Remove default bullet points */
+    display: flex; /* Align navigation items horizontally */
+  }
+  
+  .main_link ul li {
+    margin: 0 15px; /* Spacing between list items */
+  }
+  
+  /* Navigation links */
+  .main_link ul li a {
+    color: rgb(121, 81, 81); /* Set link color */
+    text-decoration: none; /* Remove underline from links */
+    padding: 10px 15px; /* Padding for clickable area */
+  }
+
   footer {
     text-align: right;
     font-style: italic;

@@ -11,10 +11,13 @@
 
 /* Set the width to 80% of the viewport width, and center the form */
 .form-container{
-    width: 80vw; 
+    width: 70vw; 
     margin: 0 auto; 
   }
 
+.form{
+  margin:0 180px;
+}
 /* Set labels within the .textfield class to display as block elements, and apply margin to the label elements */
 .textfield label {
     display: block;
@@ -25,7 +28,7 @@
 .textfield input
 {
     display: block;
-    width:90%; /* Set the width of the input elements to 90% of their parent container */
+    width:70%; /* Set the width of the input elements to 50% of their parent container */
     min-height: 1.5em;
     margin:5px 0;
 }
