@@ -1,14 +1,10 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // 接收表單數據
-    $email = $_POST['email'] ?? '';
-    $username = $_POST['username'] ?? '';
-    $password = $_POST['password'] ?? '';
-    $confirmPassword = $_POST['confirm_password'] ?? '';
+    // 接收表單數據並清理空白
+    $email = trim($_POST['email'] ?? '');
+    $username = trim($_POST['username'] ?? '');
+    $password = trim($_POST['password'] ?? '');
+    $confirmPassword = trim($_POST['confirm_password'] ?? '');
 
     // 驗證表單數據是否完整
     if (empty($email) || empty($username) || empty($password) || empty($confirmPassword)) {
@@ -47,9 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("sss", $username, $email, $hashedPassword);
 
     if ($stmt->execute()) {
-        echo "Registration successful!";
-        header("Location: success.php");
-        exit;
+        // 跳轉到成功頁面
+        header("Location: registration_success.php");
+        exit; // 確保跳轉後代碼不再執行
     } else {
         echo "Error: " . $stmt->error;
     }
