@@ -37,3 +37,5 @@ CREATE TABLE IF NOT EXISTS `post` (
 
 INSERT INTO `post`(`user_id`, `title`, `content`, `state`, `country`) VALUES
 (1, 'Test 1', 'Test laaaaaaa', 'Asia', 'Japan');
+
+ALTER TABLE account MODIFY password VARCHAR(255) NOT NULL;

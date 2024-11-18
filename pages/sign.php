@@ -20,10 +20,7 @@
     <div class="form-container">
         <h1>Customer Registration Form</h1>
         <hr>
-        <form name="registration" 
-        action="sign.php" 
-        onsubmit="return validate();" 
-        method="get">
+        <form name="registration" action="registration.php"  method="post">
             
 
             <div class="textfield">
@@ -32,23 +29,24 @@
             </div>
 
             <div class="textfield">
-                <label for="login">User Name: </label>
-                <input type="text" name="login" id="login" placeholder="User name">
+                <label for="username">User Name: </label>
+                <input type="text" name="username" id="username" placeholder="User name">
             </div>
 
             <div class="textfield">
-                <label for="pass">Password: </label>
-                <input type="password" name="pass" id="pass" placeholder="Password">
+                <label for="password">Password: </label>
+                <input type="password" name="password" id="password" placeholder="Password">
             </div>
         
             <div class="textfield">
-                <label for="pass2">Re-type Password: </label>
-                <input type="password" id="pass2" placeholder="Password">
+                <label for="confirm_password">Re-type Password: </label>
+                <input type="password" name="confirm_password" id="confirm_password" placeholder="Password" required>
             </div>
+
 
             <div class="checkbox">
                 <input type="checkbox" name="newsletter" id="newsletter">
-                <label for="newsletter">I agree to receive Weekly Kitten Pictures newsletters</label>
+                <label for="newsletter">I agree to receive newsletters</label>
             </div>
 
             <div class="checkbox">
