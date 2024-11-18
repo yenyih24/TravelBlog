@@ -1,44 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name=" description " content=" Assignment2 " />
-    <!-- Add authorship metadata and link CSS and JS files -->
+<?php
 
-    <title>Assignment2 - Travel blog- Login page</title>
-    <!-- <script src="script.js" defer></script> -->
-    <script src="../scripts/script.js"></script>
-    <link rel="stylesheet" type="text/css" href="../css/form.css">
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
-</head>
 
-<body>
-<?php include 'headerTB.php'; ?>
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = trim($_POST['email'] ?? '');
+    $password = trim($_POST['pass'] ?? '');
 
-    <div class="form-container">
-        <h1>User Login In</h1>
-        <hr>
-        <form name="login" 
-        >
-        <div class="textfield">
-                <label for="login">User Name: </label>
-                <input type="text" name="login" id="login" placeholder="User name">
-            </div>
+    // 驗證數據是否完整
+    if (empty($email) || empty($password)) {
+        die("<script>alert('Both email and password are required.'); history.back();</script>");
+    }
 
-            <div class="textfield">
-                <label for="pass">Password: </label>
-                <input type="password" name="pass" id="pass" placeholder="Password">
-            </div>
+    // 連接資料庫
+    $conn = new mysqli('localhost', 'root', '', 'assignment2');
+    if ($conn->connect_error) {
+        die("<script>alert('Database connection failed.'); history.back();</script>");
+    }
 
-            <button type="submit">Sign-Up</button>
-            <button class="reset" type="reset">Reset</button>
+    // 查詢用戶
+    $stmt = $conn->prepare("SELECT * FROM account WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-            <p>If you don't have account, <a href="sign.php">Sign up</a></P>
+    if ($result->num_rows === 0) {
+        die("<script>alert('No account found with this email.'); history.back();</script>");
+    }
 
-        </form>
-    </div>
+    $user = $result->fetch_assoc();
 
-    <?php include 'footerTB.php'; ?>
-</body>
+    // 驗證密碼
+    if ($password === $user['password']) {
+        // 使用 JavaScript 彈出訊息並跳轉
+        echo "<script>
+                alert('Login successful! Welcome, {$user['username']}');
+                window.location.href = 'index.php'; // 跳轉到首頁
+              </script>";
+        exit;
+    } else {
+        die("<script>alert('Incorrect password.'); history.back();</script>");
+    }
 
+    $stmt->close();
+    $conn->close();
+} else {
+    echo "<script>alert('Invalid request method.'); history.back();</script>";
+}
+?>
