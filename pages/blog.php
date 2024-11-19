@@ -51,7 +51,7 @@
   $post = mysqli_fetch_assoc($result_set);
   ?>
 
-
+<main>
 <!-- display the blog data -->
   <div id="content">
 
