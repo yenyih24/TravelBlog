@@ -1,10 +1,10 @@
 <!-- single page form so we get the id and if we hit post the we update so we will process the update mysqli_query
 and redirect to show page otherwise just display the record. -->
 <?php
-require_once('database.php');
+require_once('../server/database.php');
 $db = db_connect();
 
-include 'headerEm.php' ;
+include 'headerTB.php' ;
 if (!isset($_GET['id'])) { //check if we get the id
   header("Location:  index.php");
 }
@@ -12,6 +12,14 @@ $id = $_GET['id'];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   //access the employee information
+  $title = $_POST['title'] ;
+  $state = $_POST['state'] ;
+  $country = $_POST['country'] ;
+  $content = $_POST['post_content'] ;
+  $imagePath = null;
+
+
+
   $name = $_POST['name'];
   $address = $_POST['address'];
   $salary = $_POST['salary'];
@@ -73,4 +81,4 @@ else {
 
 </div>
 
-<?php include 'footerEm.php'; ?>
+<?php include 'footerTB.php'; ?>
