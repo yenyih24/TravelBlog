@@ -1,125 +1,296 @@
 body {
-    font-family: Helvetica;
-    background-image: linear-gradient(-225deg, #FFFEFF 0%, #D7FFFE 100%);
-    background-size: cover; /* Ensure the background covers the entire viewport */
-    background-attachment: fixed; /* Keep the background fixed while scrolling */
-  }
-  
-  /* Header */
-  header {
-    padding: 10px 0;
-    color: rgb(105, 95, 95); /*make text color*/
-    border-bottom: 2px solid rgb(164, 145, 145); /* 設定邊框為下邊、2像素、黑色 */
-    padding: 10px; /* 增加一些內邊距 */
-    
-  }
-  
-  /* Make sure the website’s title (<h1>) scales appropriately without causing layout issues on smaller screens by using descendant selector. */
-  header h1 {
-    margin: 20px 50px; /* Top and bottom margin 20px, left and right margin 0 */
-    font-size: 3em; /* Font size set to three times the parent element's font size */
-    text-align: left; /* Center text */
-  }
-  
-  /*header nav */
-  nav {
-    display: flex; /* Use flexbox layout for navigation */
-    justify-content: center; /* Center navigation items */
-  }
-  
-  /* Unordered list inside the nav */
-  nav ul {
-    list-style-type: none; /* Remove default bullet points */
-    display: flex; /* Align navigation items horizontally */
-  }
-  
-  nav ul li {
-    margin: 0 15px; /* Spacing between list items */
-  }
-  
-  /* Navigation links */
-  nav ul li a {
-    color: rgb(121, 81, 81); /* Set link color */
-    text-decoration: none; /* Remove underline from links */
-    padding: 10px 15px; /* Padding for clickable area */
-  }
-  
-  a:hover {
-    background-color: rgb(176, 225, 235);
-    border-radius: 30px; /* Round the corners of the element */
-  }
+  font-family: Helvetica;
+  background-image: linear-gradient(-225deg, #FFFEFF 0%, #D7FFFE 100%);
+  background-size: cover; /* Ensure the background covers the entire viewport */
+  background-attachment: fixed; /* Keep the background fixed while scrolling */
+}
 
 
-  
-  .big-container {
-    font-family: helvetica, arial, sans-serif;
-    display: grid;
-    grid-template-columns: 1fr 3fr; /* Create responsive columns */
-    padding: 20px 0; /* Padding around the main content */
-  }
-  
-  
-  main {
-    padding-left: 30px; /* Add 30px of padding to the left of the main content */
-  }
+/* Header */
+header {
+  padding: 10px 0;
+  color: rgb(105, 95, 95); /*make text color*/
+  border-bottom: 2px solid rgb(164, 145, 145); /* 設定邊框為下邊、2像素、黑色 */
+  padding: 10px; /* 增加一些內邊距 */
+ 
+}
 
-  .divider {
-    border-bottom: 2px solid rgb(105, 95, 95); /* Add a 2px solid bottom border for a divider line */
-    margin: 3px 0;
-  }
-  
-  
-  aside {
-    display: flex;
-    align-content: center; /* Center items along the cross axis */
-    flex-direction: column; /* Arrange items in a column */
-    text-align: center; /* Center text within the aside */
-  }
-  
-  aside ul {
-    padding: 0; /* Remove default padding */
-  }
-  
-  aside ul li {
-    list-style-type: none; /* Remove bullet points */
-    margin: 20px 0; /* Spacing between list items */
-  }
-  
-  aside ul li a {
-    color: rgb(121, 81, 81);
-    text-decoration: none; /* Remove underline from links */
-    padding: 10px 15px; /* Padding for area */
-  }
 
-  .main_link {
-    display: flex; /* Use flexbox layout for main_link */
-    justify-content: center; /* Center navigation items */
-  }
-  
-  /* Unordered list inside the nav */
-  .main_link ul {
-    list-style-type: none; /* Remove default bullet points */
-    display: flex; /* Align navigation items horizontally */
-  }
-  
-  .main_link ul li {
-    margin: 0 15px; /* Spacing between list items */
-  }
-  
-  /* Navigation links */
-  .main_link ul li a {
-    color: rgb(121, 81, 81); /* Set link color */
-    text-decoration: none; /* Remove underline from links */
-    padding: 10px 15px; /* Padding for clickable area */
-  }
+/* Make sure the website’s title (<h1>) scales appropriately without causing layout issues on smaller screens by using descendant selector. */
+header h1 {
+  margin: 20px 50px; /* Top and bottom margin 20px, left and right margin 0 */
+  font-size: 3em; /* Font size set to three times the parent element's font size */
+  text-align: left; /* Center text */
+}
 
-  footer {
-    text-align: right;
-    font-style: italic;
-    font-size: 1em;
-  }
-  
-  footer p {
-    padding: 10px 15px;
-  }
-  
+
+/*header nav */
+nav {
+  display: flex; /* Use flexbox layout for navigation */
+  justify-content: center; /* Center navigation items */
+}
+
+
+/* Unordered list inside the nav */
+nav ul {
+  list-style-type: none; /* Remove default bullet points */
+  display: flex; /* Align navigation items horizontally */
+}
+
+
+nav ul li {
+  margin: 0 15px; /* Spacing between list items */
+}
+
+
+/* Navigation links */
+nav ul li a {
+  color: rgb(121, 81, 81); /* Set link color */
+  text-decoration: none; /* Remove underline from links */
+  padding: 10px 15px; /* Padding for clickable area */
+}
+
+
+a:hover {
+  background-color: rgb(176, 225, 235);
+  border-radius: 30px; /* Round the corners of the element */
+}
+
+
+
+
+
+
+.big-container {
+  font-family: helvetica, arial, sans-serif;
+  display: grid;
+  grid-template-columns: 1fr 3fr; /* Create responsive columns */
+  padding: 20px 0; /* Padding around the main content */
+}
+
+
+
+
+main {
+  padding-left: 30px; /* Add 30px of padding to the left of the main content */
+}
+
+
+.divider {
+  border-bottom: 2px solid rgb(105, 95, 95); /* Add a 2px solid bottom border for a divider line */
+  margin: 3px 0;
+}
+
+
+
+
+aside {
+  display: flex;
+  align-content: center; /* Center items along the cross axis */
+  flex-direction: column; /* Arrange items in a column */
+  text-align: center; /* Center text within the aside */
+}
+
+
+aside ul {
+  padding: 0; /* Remove default padding */
+}
+
+
+aside ul li {
+  list-style-type: none; /* Remove bullet points */
+  margin: 20px 0; /* Spacing between list items */
+}
+
+
+aside ul li a {
+  color: rgb(121, 81, 81);
+  text-decoration: none; /* Remove underline from links */
+  padding: 10px 15px; /* Padding for area */
+}
+
+
+.main_link {
+  display: flex; /* Use flexbox layout for main_link */
+  justify-content: center; /* Center navigation items */
+}
+
+
+/* Unordered list inside the nav */
+.main_link ul {
+  list-style-type: none; /* Remove default bullet points */
+  display: flex; /* Align navigation items horizontally */
+}
+
+
+.main_link ul li {
+  margin: 0 15px; /* Spacing between list items */
+}
+
+
+/* Navigation links */
+.main_link ul li a {
+  color: rgb(121, 81, 81); /* Set link color */
+  text-decoration: none; /* Remove underline from links */
+  padding: 10px 15px; /* Padding for clickable area */
+}
+/* 整体页面样式 */
+body {
+font-family: Helvetica, Arial, sans-serif;
+background-color: #d7fffe; /* 浅蓝绿色背景 */
+margin: 0;
+padding: 0;
+}
+
+
+/* 标题居中 */
+#content h1 {
+font-size: 2.5em;
+color: #333333; /* 深灰色标题文字 */
+text-align: center; /* 居中 */
+margin-bottom: 20px;
+font-weight: bold;
+}
+
+
+/* 布局调整 */
+.big-container {
+display: grid;
+grid-template-columns: 1fr 3fr; /* 左侧1列，右侧3列 */
+gap: 20px;
+padding: 20px;
+}
+
+
+/* 左侧菜单 */
+aside {
+background: #ffffff;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+aside ul {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+
+
+aside ul li {
+margin: 20px 0;
+text-align: center;
+}
+
+
+aside ul li a {
+text-decoration: none;
+color: #333333;
+font-size: 1.2em;
+font-weight: bold;
+}
+
+
+/* 整体内容背景色为浅蓝绿色 */
+#content .page {
+background: linear-gradient(145deg, #d7fffe, #f0ffff); /* 浅蓝绿色背景 */
+border-radius: 15px;
+padding: 30px;
+box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+/* 标题居中 */
+#content h1 {
+font-size: 2.5em;
+color: #333333; /* 深灰色标题文字 */
+margin-bottom: 20px;
+font-weight: bold;
+text-align: center; /* 居中 */
+}
+
+
+/* 属性信息调整布局 */
+.attributes {
+font-size: 32px;
+display: grid;
+grid-template-columns: 1fr 1fr; /* 两列布局 */
+align-items: center;
+border-bottom: 1px solid #ccc; /* 添加分隔符 */
+margin-bottom: 20px; /* 与正文分隔 */
+padding-bottom: 10px;
+}
+
+
+.attributes dl {
+margin: 0; /* 移除多余间距 */
+}
+
+
+.attributes .author {
+font-size: 32px;
+text-align: left; /* Author 信息左对齐 */
+font-weight: bold;
+color: #555555;
+}
+
+
+.country{
+font-size: 38px;
+text-align: right; /* Country 和 State 右对齐 */
+color: #090909;
+}
+
+
+/* 图片样式 */
+.image-container img {
+font-size: 38px;
+display: block;
+margin: 20px auto; /* 图片居中 */
+width: 50%; /* 宽度为浏览器宽度的50% */
+min-width: 200px; /* 最小宽度200px */
+height: auto; /* 高度自动调整 */
+border-radius: 10px; /* 图片圆角 */
+box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+}
+
+
+/* 正文内容样式 */
+.blogContent {
+margin-top: 20px;
+}
+
+
+.blogContent dl {
+margin: 0;
+font-size: 28px;
+line-height: 1.6; /* 行高增加 */
+color: #333333;
+}
+
+
+/* 创建时间样式 */
+.created_at dl {
+font-size: 28px;
+text-align: right; /* 时间信息右对齐 */
+color: #999999; /* 浅灰色 */
+margin-top: 20px;
+}
+
+
+/* 注释 */
+
+
+footer {
+  text-align: right;
+  font-style: italic;
+  font-size: 1em;
+}
+
+
+footer p {
+  padding: 10px 15px;
+}
+
+
