@@ -16,8 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die("Passwords do not match.");
     }
 
-    // 將密碼哈希加密
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    $hashedPassword = $password;
+
 
     // 連接資料庫
     $conn = new mysqli('localhost', 'root', '', 'assignment2');
