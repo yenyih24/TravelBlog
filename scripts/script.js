@@ -1,8 +1,8 @@
 // Select individual form elements by their IDs and assign them to variables for easier access
 let emailInput=document.querySelector("#email");
-let loginInput=document.querySelector("#login");
-let passInput=document.querySelector("#pass");
-let pass2Input=document.querySelector("#pass2");
+let loginInput=document.querySelector("#username");
+let passInput=document.querySelector("#password");
+let pass2Input=document.querySelector("#confirm_password");
 let newsletter=document.querySelector("#newsletter");
 let termInput=document.querySelector("#terms");
 

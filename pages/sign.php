@@ -8,7 +8,7 @@
 
     <title>Assignment2 - Travel blog- Registration Form</title>
     <!-- <script src="script.js" defer></script> -->
-    <script src="../scripts/script.js"></script>
+    <script src="../scripts/script.js" defer></script>
     <link rel="stylesheet" type="text/css" href="../css/form.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
 
@@ -22,9 +22,8 @@
         <h1>Customer Registration Form</h1>
         <hr>
 
-        <form name="registration" action="registration.php"  method="post">
+        <form name="registration" action="registration.php"  method="post" onsubmit="return validate();">
             
-            <div class="form">
             <div class="textfield">
                 <label for="email">Email Address: </label>
                 <input type="text" name="email" id="email" placeholder="Email">
@@ -58,7 +57,6 @@
 
             <button type="submit">Sign-Up</button>
             <button class="reset" type="reset">Reset</button>
-        </div>
         </form>
     </div>
     <?php include 'footerTB.php'; ?>

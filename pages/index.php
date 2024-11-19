@@ -44,7 +44,7 @@ if (!$result_set) {
     <?php while ($post = mysqli_fetch_assoc($result_set)) { 
       ?>
 
-    <p><?php echo $post['title']; ?><p></div>
+    <p><?php echo $post['title']; ?><p>
     
     <p><?php echo $post['state']; ?><p>
     
