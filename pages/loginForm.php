@@ -34,7 +34,7 @@
             <button type="submit">Login</button>
             <button class="reset" type="reset">Reset</button>
 
-            <p>If you don't have account, <a href="sign.php">Sign up</a></P>
+            <p>If you don't have account, <a href="registrationForm.php">Sign up here</a></P>
 
         </form>
     </div>
