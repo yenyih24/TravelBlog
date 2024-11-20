@@ -18,6 +18,7 @@
 
 <?php include 'headerTB.php'; ?>
 
+<main>
     <div class="form-container">
         <h1>Customer Registration Form</h1>
         <hr>
@@ -59,7 +60,9 @@
             <button class="reset" type="reset">Reset</button>
         </form>
     </div>
-    <?php include 'footerTB.php'; ?>
+</main>
+
+<?php include 'footerTB.php'; ?>
 
 </body>
 
