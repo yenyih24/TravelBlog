@@ -9,6 +9,7 @@ if (!isset($_GET['id'])) { //check if we get the id
   header("Location:  index.php");
 }
 $id = $_GET['id'];
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   //access the employee information
@@ -18,67 +19,67 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $content = $_POST['post_content'] ;
   $imagePath = null;
 
+  if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
+    $uploadDir = '../uploads/';
+    $imagePath = $uploadDir . basename($_FILES['image']['name']);
+    if (move_uploaded_file($_FILES['image']['tmp_name'], $imagePath)) {
+      $imagePath = mysqli_real_escape_string($db, $imagePath);
+    }
+  }
 
-
-  $name = $_POST['name'];
-  $address = $_POST['address'];
-  $salary = $_POST['salary'];
-  //update the table with new information
-  $sql = "UPDATE employees set name = '$name' , address= '$address' , salary= '$salary' where id = '$id' ";
+  // 更新資料表 post
+  $sql = "UPDATE post SET 
+            title = '$title', 
+            state = '$state', 
+            country = '$country', 
+            content = '$content', 
+            image = '$imagePath' 
+          WHERE post_id = '$id'";
   $result = mysqli_query($db, $sql);
-  //redirect to show page
-  header("Location: show.php?id=  $id");
-}
-// display the employee information
-else {
-  $sql = "SELECT * FROM employees WHERE id= '$id' ";
 
+  // 重新導向至顯示頁面
+  header("Location: blog.php?post_id=$post_id");
+} else {
+  // 顯示目前的 post 資訊
+  $sql = "SELECT * FROM post WHERE post_id='$id'";
   $result_set = mysqli_query($db, $sql);
-
   $result = mysqli_fetch_assoc($result_set);
 }
-
 ?>
 
 
 <div id="content">
 
-  <a class="back-link" href="index.php"> Back to List</a>
-
   <div class="page edit">
-    <h1>Edit Employee</h1>
+    <h1>Edit Post</h1>
 
-    <form action="<?php echo 'edit.php?id=' . $result['id']; ?>" method="post">
-      <dl>
-        <dt> ID</dt>
-        <dd><input type="text" name="id" value="<?php echo $result['id']; ?>" /></dd>
-        </dd>
+    <form action="<?php echo 'edit.php?id=' . $result['post_id']; ?>" method="post" >
+    <dl>
+        <dt>Title</dt>
+        <dd><input type="text" name="title" value="<?php echo $result['title']; ?>" /></dd>
       </dl>
       <dl>
-        <dt>Name</dt>
-        <dd><input type="text" name="name" value="<?php echo $result['name']; ?>" /></dd>
+        <dt>State</dt>
+        <dd><input type="text" name="state" value="<?php echo $result['state']; ?>" /></dd>
       </dl>
       <dl>
-        <dt>Address</dt>
-        <dd><input type="text" name="address" value="<?php echo $result['address']; ?>" /></dd>
-
-        </dd>
+        <dt>Country</dt>
+        <dd><input type="text" name="country" value="<?php echo $result['country']; ?>" /></dd>
       </dl>
       <dl>
-        <dt>Salary</dt>
-
-        <dd><input type="text" name="salary" value="<?php echo $result['salary']; ?>" /></dd>
-
-        </dd>
+        <dt>Content</dt>
+        <dd><textarea name="post_content"><?php echo $result['content']; ?></textarea></dd>
+      </dl>
+      <dl>
+        <dt>Image</dt>
+        <dd><input type="file" name="image" /></dd>
       </dl>
 
       <div id="operations">
-        <input type="submit" value="Edit Employee" />
+        <input type="submit" value="Edit Post" />
       </div>
     </form>
-
   </div>
-
 </div>
 
 <?php include 'footerTB.php'; ?>
