@@ -44,13 +44,13 @@ if (!$result_set) {
     <?php while ($post = mysqli_fetch_assoc($result_set)) { 
       ?>
 
-    <p><?php echo $post['title']; ?><p>
+    <h1><?php echo $post['title']; ?></h1>
     
-    <p><?php echo $post['state']; ?><p>
+    <h3><?php echo $post['state']; ?></h3>
     
-    <p><?php echo $post['country']; ?><p>
+    <p><?php echo $post['country']; ?></p>
     
-    <p><?php echo $post['content']; ?><p>
+    <p><?php echo $post['content']; ?></p>
 
      <!-- send the id as parameter -->
       <div class="main_link">
