@@ -1,13 +1,8 @@
-
 /*Set the warning font color*/
 .warning {
     color: red;
   }
 
-  /*Set the info font color*/
-.info {
-    color:blue;
-}
 
 /* Set the width to 80% of the viewport width, and center the form */
 .form-container{
@@ -34,9 +29,9 @@
 }
 
 button{
-    background:skyblue;
+    background:rgb(104, 198, 236);
 }
 
 .reset{
-    background: palevioletred;
+    background: rgb(168, 60, 96);
 }
