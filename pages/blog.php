@@ -76,7 +76,8 @@
         <?php endif; ?>
         <dl>
           <dt>Content</dt>
-          <dd><?php echo ($post['content']); ?></dd> <!-- Display the content of the blog -->
+          <dd><?php echo nl2br(htmlspecialchars($post['content'])); ?></dd> <!-- Display the content of the blog -->
+          <!-- nl2br(): 將儲存在資料庫中的換行符號（\n）轉換為 HTML 的 <br> 標籤 -->
         </dl>
 
         <dl>
