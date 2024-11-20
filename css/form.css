@@ -1,8 +1,12 @@
 /*Set the warning font color*/
 .warning {
-    color: rgb(252, 118, 106);
+  color: rgb(252, 118, 106);
   }
 
+  /*Set the info font color*/
+.info {
+    color:blue;
+}
 
 /* Set the width to 80% of the viewport width, and center the form */
 .form-container{

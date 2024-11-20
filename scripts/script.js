@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   //event handler for submit event
-  validate = function () {
+  validate = function validate() {
     console.trace("Form validation started");
     console.trace();
     let valid = true; //global validation
