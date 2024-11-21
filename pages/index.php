@@ -37,24 +37,27 @@
 
         <main class = indexPage>
             <div class="post-container">
-                <?php
+            <?php
                 require_once('../server/database.php');
 
                 $db = db_connect(); // Connect to the database
 
                 // 檢查是否有選中的篩選條件
-                $filterStates = $_GET['state'] ?? []; // 從 GET 獲取篩選條件（多選框的值）
+                $filterStates = isset($_GET['state']) && is_array($_GET['state']) ? $_GET['state'] : []; // 從 GET 獲取篩選條件
 
                 $sql = "SELECT p.post_id, p.title, p.state, p.country, p.content, p.image_path, p.created_at, p.user_id, a.username ";
                 $sql .= "FROM post p ";
                 $sql .= "JOIN account a ON p.user_id = a.id "; // Join with the account table to fetch username
 
                 if (!empty($filterStates)) {
-                    $statesIn = implode("','", array_map('mysqli_real_escape_string', $filterStates));
+                    // 將篩選條件中的每個 state 使用 mysqli_real_escape_string 處理
+                    $statesIn = implode("','", array_map(function($state) use ($db) {
+                        return mysqli_real_escape_string($db, $state);
+                    }, $filterStates));
                     $sql .= "WHERE p.state IN ('$statesIn') ";
                 }
 
-                $sql .= "ORDER BY p.created_at DESC";
+                $sql .= "ORDER BY p.created_at DESC"; // Order by the most recent posts
 
                 $result_set = mysqli_query($db, $sql);
 
@@ -62,6 +65,7 @@
                     die("Database query failed: " . mysqli_error($db));
                 }
                 ?>
+
 
                 <div class="blog">
                     <?php while ($post = mysqli_fetch_assoc($result_set)) { ?>
