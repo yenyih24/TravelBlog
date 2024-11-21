@@ -89,6 +89,20 @@
                   <?php } ?>
               </div>
 
+<<<<<<< HEAD
+                        <!-- send the id as parameter -->
+                        <div class="main_link">
+                            <ul>
+                                <li><a class="action" href="<?php echo "blog.php?id=" . $post['post_id']; ?>">View</a></li>
+                                <li><a class="action" href="<?php echo "edit.php?id=" . $post['post_id']; ?>">Edit</a></li>
+                                <li><a class="action" href="<?php echo "delete.php?post_id=" . $post['post_id']; ?>" onclick="return confirm('Are you sure you want to delete this post?');">Delete</a></li>
+
+                            </ul>
+                        </div>
+                    <?php } ?>
+                </div>
+=======
+>>>>>>> 4331a954fdeea4fc216a9258916e56c5cc6dc7d1
             </div>
 
             <?php $stmt->close(); ?>
