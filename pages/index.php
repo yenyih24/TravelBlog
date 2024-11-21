@@ -45,7 +45,7 @@
                 // 檢查是否有選中的篩選條件
                 $filterStates = $_GET['state'] ?? []; // 從 GET 獲取篩選條件（多選框的值）
 
-                $sql = "SELECT p.post_id, p.title, p.state, p.country, p.content, p.created_at, p.user_id, a.username ";
+                $sql = "SELECT p.post_id, p.title, p.state, p.country, p.content, p.image_path, p.created_at, p.user_id, a.username ";
                 $sql .= "FROM post p ";
                 $sql .= "JOIN account a ON p.user_id = a.id "; // Join with the account table to fetch username
 
@@ -65,26 +65,35 @@
 
                 <div class="blog">
                     <?php while ($post = mysqli_fetch_assoc($result_set)) { ?>
-                        <h1><?php echo htmlspecialchars($post['title']); ?></h1>
-                        <h3><?php echo htmlspecialchars($post['state']); ?></h3>
-                        <p><?php echo htmlspecialchars($post['country']); ?></p>
+                        <div class="post">
+                            <h1><?php echo htmlspecialchars($post['title']); ?></h1>
+                            <h3><?php echo htmlspecialchars($post['state']); ?></h3>
+                            <p><?php echo htmlspecialchars($post['country']); ?></p>
 
-                        <!-- 限制內容只顯示三行 -->
-                        <div class="content-preview">
-                            <?php echo nl2br(htmlspecialchars($post['content'])); ?>
-                        </div>
+                            <!-- 顯示圖片 -->
+                            <?php if (!empty($post['image_path'])): ?>
+                                <div class="image-container">
+                                    <img src="<?php echo htmlspecialchars($post['image_path']); ?>" alt="Post Image" width="300">
+                                </div>
+                            <?php endif; ?>
 
-                        <!-- 檢查是否是作者 -->
-                        <div class="main_link">
-                            <ul>
-                                <li><a class="action" href="<?php echo "blog.php?id=" . $post['post_id']; ?>">View</a></li>
-                                <?php 
-                                if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $post['user_id']) { 
-                                ?>
-                                    <li><a class="action" href="<?php echo "edit.php?id=" . $post['post_id']; ?>">Edit</a></li>
-                                    <li><a class="action" href="<?php echo "delete.php?post_id=" . $post['post_id']; ?>" onclick="return confirm('Are you sure you want to delete this post?');">Delete</a></li>
-                                <?php } ?>
-                            </ul>
+                            <!-- 限制內容只顯示三行 -->
+                            <div class="content-preview">
+                                <?php echo nl2br(htmlspecialchars($post['content'])); ?>
+                            </div>
+
+                            <!-- 檢查是否是作者 -->
+                            <div class="main_link">
+                                <ul>
+                                    <li><a class="action" href="<?php echo "blog.php?id=" . $post['post_id']; ?>">View</a></li>
+                                    <?php 
+                                    if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $post['user_id']) { 
+                                    ?>
+                                        <li><a class="action" href="<?php echo "edit.php?id=" . $post['post_id']; ?>">Edit</a></li>
+                                        <li><a class="action" href="<?php echo "delete.php?post_id=" . $post['post_id']; ?>" onclick="return confirm('Are you sure you want to delete this post?');">Delete</a></li>
+                                    <?php } ?>
+                                </ul>
+                            </div>
                         </div>
                     <?php } ?>
                 </div>
