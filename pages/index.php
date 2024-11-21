@@ -9,7 +9,10 @@
 </head>
 
 <body>
-    <?php include 'headerTB.php'; ?>
+    <?php 
+    session_start();
+    include 'headerTB.php'; 
+    ?>
 
     <div class="big-container">
         <aside>
@@ -42,57 +45,61 @@
                 // 檢查是否有選中的篩選條件
                 $filterStates = $_GET['state'] ?? []; // 從 GET 獲取篩選條件（多選框的值）
 
-                $sql = "SELECT p.post_id, p.title, p.state, p.country, p.content, p.created_at, a.username ";
+                $sql = "SELECT p.post_id, p.title, p.state, p.country, p.content, p.image_path, p.created_at, p.user_id, a.username ";
                 $sql .= "FROM post p ";
                 $sql .= "JOIN account a ON p.user_id = a.id "; // Join with the account table to fetch username
 
                 if (!empty($filterStates)) {
-                    // 如果有篩選條件，添加 WHERE 子句
-                    $placeholders = implode(',', array_fill(0, count($filterStates), '?'));
-                    $sql .= "WHERE p.state IN ($placeholders) ";
+                    $statesIn = implode("','", array_map('mysqli_real_escape_string', $filterStates));
+                    $sql .= "WHERE p.state IN ('$statesIn') ";
                 }
 
-                $sql .= "ORDER BY p.created_at DESC"; // Order by the most recent posts
+                $sql .= "ORDER BY p.created_at DESC";
 
-                $stmt = $db->prepare($sql);
+                $result_set = mysqli_query($db, $sql);
 
-                if (!empty($filterStates)) {
-                    // 動態綁定參數
-                    $stmt->bind_param(str_repeat('s', count($filterStates)), ...$filterStates);
-                }
-
-                $stmt->execute();
-                $result_set = $stmt->get_result(); // Execute the query
                 if (!$result_set) {
-                    die("Database query failed: " . $db->error);
+                    die("Database query failed: " . mysqli_error($db));
                 }
                 ?>
 
-              <div class="blog">
-                  <?php while ($post = mysqli_fetch_assoc($result_set)) { ?>
-                      <h1><?php echo htmlspecialchars($post['title']); ?></h1>
-                      <h3><?php echo htmlspecialchars($post['state']); ?></h3>
-                      <p><?php echo htmlspecialchars($post['country']); ?></p>
+                <div class="blog">
+                    <?php while ($post = mysqli_fetch_assoc($result_set)) { ?>
+                        <div class="post">
+                            <h1><?php echo htmlspecialchars($post['title']); ?></h1>
+                            <h3><?php echo htmlspecialchars($post['state']); ?></h3>
+                            <p><?php echo htmlspecialchars($post['country']); ?></p>
 
-                      <!-- 限制內容只顯示三行 -->
-                      <div class="content-preview">
-                          <?php echo nl2br(htmlspecialchars($post['content'])); ?>
-                      </div>
+                            <!-- 顯示圖片 -->
+                            <?php if (!empty($post['image_path'])): ?>
+                                <div class="image-container">
+                                    <img src="<?php echo htmlspecialchars($post['image_path']); ?>" alt="Post Image" width="300">
+                                </div>
+                            <?php endif; ?>
 
-                        <!-- send the id as parameter -->
-                        <div class="main_link">
-                            <ul>
-                                <li><a class="action" href="<?php echo "blog.php?id=" . $post['post_id']; ?>">View</a></li>
-                                <li><a class="action" href="<?php echo "edit.php?id=" . $post['post_id']; ?>">Edit</a></li>
-                                <li><a class="action" href="<?php echo "delete.php?post_id=" . $post['post_id']; ?>" onclick="return confirm('Are you sure you want to delete this post?');">Delete</a></li>
+                            <!-- 限制內容只顯示三行 -->
+                            <div class="content-preview">
+                                <?php echo nl2br(htmlspecialchars($post['content'])); ?>
+                            </div>
 
-                            </ul>
+                            <!-- 檢查是否是作者 -->
+                            <div class="main_link">
+                                <ul>
+                                    <li><a class="action" href="<?php echo "blog.php?id=" . $post['post_id']; ?>">View</a></li>
+                                    <?php 
+                                    if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $post['user_id']) { 
+                                    ?>
+                                        <li><a class="action" href="<?php echo "edit.php?id=" . $post['post_id']; ?>">Edit</a></li>
+                                        <li><a class="action" href="<?php echo "delete.php?post_id=" . $post['post_id']; ?>" onclick="return confirm('Are you sure you want to delete this post?');">Delete</a></li>
+                                    <?php } ?>
+                                </ul>
+                            </div>
                         </div>
                     <?php } ?>
                 </div>
             </div>
 
-            <?php $stmt->close(); ?>
+            <?php mysqli_close($db); ?>
         </main>
     </div>
 
