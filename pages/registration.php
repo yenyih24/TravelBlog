@@ -43,9 +43,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("sss", $username, $email, $hashedPassword);
 
     if ($stmt->execute()) {
-        // 跳轉到成功頁面
-        header("Location: registration_success.php");
-        exit; // 確保跳轉後代碼不再執行
+        echo "<script>
+            alert('Registration successful! You can now log in.');
+            window.location.href = 'loginForm.php';
+        </script>";
+        exit; // 確保腳本執行停止
     } else {
         echo "Error: " . $stmt->error;
     }
