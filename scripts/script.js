@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let loginErrorMsg =
     "User name should be non-empty, and within 30 characters long.";
   let passErrorMsg =
-    "Password should be at least 8 characters: 1 uppercase, 1 lowercase.";
+    "Password should be at least 6 characters.";
   let pass2ErrorMsg = "Please retype password.";
   let termsErrorMsg = "Please accept the terms and conditions.";
   let defaultMsg = "";
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //method to validate password input; check if password contain at least one uppercase letter, one lowercase letter, and more than 8 character long
   function validatePass() {
     let password = passInput.value;
-    let regexp = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d]{8,}$/; //Regular expression to validate the password input
+    let regexp = /^[A-Za-z\d]{6,}$/; //Regular expression to validate the password input
 
     if (regexp.test(password)) {
       message = defaultMsg;
