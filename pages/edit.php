@@ -28,32 +28,37 @@ $id = $_GET['id'];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   //access the employee information
-  $title = $_POST['title'] ;
-  $state = $_POST['state'] ;
-  $country = $_POST['country'] ;
-  $content = $_POST['post_content'] ;
+  $title = mysqli_real_escape_string($db, $_POST['title']) ;
+  $state = mysqli_real_escape_string($db, $_POST['state']) ;
+  $country = mysqli_real_escape_string($db, $_POST['country']) ;
+  $content = mysqli_real_escape_string($db, $_POST['post_content']) ;
   $imagePath = null;
 
-  if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-    $uploadDir = '../uploads/';
-    $imagePath = $uploadDir . basename($_FILES['image']['name']);
-    if (move_uploaded_file($_FILES['image']['tmp_name'], $imagePath)) {
-      $imagePath = mysqli_real_escape_string($db, $imagePath);
+
+  if (isset($_FILES['picture']) && $_FILES['picture']['error'] == UPLOAD_ERR_OK) {
+    $uploadDir = 'uploads/images';
+    $fileName = basename($_FILES['picture']['name']);
+    $uploadFile = $uploadDir . $fileName;
+
+    if (move_uploaded_file($_FILES['picture']['tmp_name'], $uploadFile)) {
+      $imagePath = $uploadFile;
+    } else {
+      die("Failed to upload picture.");
     }
   }
 
   // 更新資料表 post
-  $sql = "UPDATE post SET 
-            title = '$title', 
+    //update the table with new information
+  $sql = "UPDATE post SET title = '$title', 
             state = '$state', 
             country = '$country', 
             content = '$content', 
-            image = '$imagePath' 
+            image_path = '$imagePath' 
           WHERE post_id = '$id'";
   $result = mysqli_query($db, $sql);
 
   // 重新導向至顯示頁面
-  header("Location: index.php?post_id=$id");
+  header("Location: blog.php?post_id=$id");
   exit;
 } else {
   // 顯示目前的 post 資訊
@@ -67,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <h1>Edit Post</h1>
 
-    <form action="<?php echo 'edit.php?id=' . $result['post_id']; ?>" method="post" >
+    <form action="<?php echo 'edit.php?id=' . $result['post_id']; ?>" method="post" enctype="multipart/form-data" >
 
     <div class="textfield">
           <label for="title">Title : </label>
@@ -90,8 +95,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
   
       <dl>
-        <dt>Image</dt>
-        <dd><input type="file" name="image" /></dd>
+        <dt>Picture</dt>
+        <dd><input type="file" name="picture" accept="image/*" /></dd>
       </dl>
 
       <div id="operations">
