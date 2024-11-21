@@ -89,7 +89,6 @@
                   <?php } ?>
               </div>
 
-<<<<<<< HEAD
                         <!-- send the id as parameter -->
                         <div class="main_link">
                             <ul>
@@ -101,8 +100,6 @@
                         </div>
                     <?php } ?>
                 </div>
-=======
->>>>>>> 4331a954fdeea4fc216a9258916e56c5cc6dc7d1
             </div>
 
             <?php $stmt->close(); ?>
