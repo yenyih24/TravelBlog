@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
   if (isset($_FILES['picture']) && $_FILES['picture']['error'] == UPLOAD_ERR_OK) {
-    $uploadDir = 'uploads/images';
+    $uploadDir = 'uploads/images/';
     $fileName = basename($_FILES['picture']['name']);
     $uploadFile = $uploadDir . $fileName;
 
