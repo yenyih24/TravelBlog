@@ -68,23 +68,27 @@
                 }
                 ?>
 
-                <div class="blog">
-                    <?php while ($post = mysqli_fetch_assoc($result_set)) { ?>
-                        <h1><?php echo htmlspecialchars($post['title']); ?></h1>
-                        <h3><?php echo htmlspecialchars($post['state']); ?></h3>
-                        <p><?php echo htmlspecialchars($post['country']); ?></p>
-                        <p><?php echo nl2br(htmlspecialchars($post['content'])); ?></p>
+              <div class="blog">
+                  <?php while ($post = mysqli_fetch_assoc($result_set)) { ?>
+                      <h1><?php echo htmlspecialchars($post['title']); ?></h1>
+                      <h3><?php echo htmlspecialchars($post['state']); ?></h3>
+                      <p><?php echo htmlspecialchars($post['country']); ?></p>
 
-                        <!-- send the id as parameter -->
-                        <div class="main_link">
-                            <ul>
-                                <li><a class="action" href="<?php echo "blog.php?id=" . $post['post_id']; ?>">View</a></li>
-                                <li><a class="action" href="<?php echo "edit.php?id=" . $post['post_id']; ?>">Edit</a></li>
-                                <li><a class="action" href="<?php echo "delete.php?id=" . $post['post_id']; ?>">Delete</a></li>
-                            </ul>
-                        </div>
-                    <?php } ?>
-                </div>
+                      <!-- 限制內容只顯示三行 -->
+                      <div class="content-preview">
+                          <?php echo nl2br(htmlspecialchars($post['content'])); ?>
+                      </div>
+
+                      <div class="main_link">
+                          <ul>
+                              <li><a class="action" href="<?php echo "blog.php?id=" . $post['post_id']; ?>">View</a></li>
+                              <li><a class="action" href="<?php echo "edit.php?id=" . $post['post_id']; ?>">Edit</a></li>
+                              <li><a class="action" href="<?php echo "delete.php?id=" . $post['post_id']; ?>">Delete</a></li>
+                          </ul>
+                      </div>
+                  <?php } ?>
+              </div>
+
             </div>
 
             <?php $stmt->close(); ?>
