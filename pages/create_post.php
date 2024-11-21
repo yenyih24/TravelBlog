@@ -49,11 +49,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("isssss", $userId, $title, $state, $country, $content, $imagePath);
 
     if ($stmt->execute()) {
-        // 成功插入資料後跳轉到 create_success.php
-        header("Location: create_success.php");
-        exit; // 停止後續代碼執行
+        echo "<script>
+            alert('Post Created Successfully!');
+            window.location.href = 'index.php';
+        </script>";
+        exit; // 確保腳本執行停止
     } else {
-        echo "Database error: " . $stmt->error;
+        echo "Error: " . $stmt->error;
     }
 
     $stmt->close();
