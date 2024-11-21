@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             mkdir($uploadDir, 0777, true); // 創建目錄
         }
 
-        if (move_uploaded_file($_FILES['picture']['tmp_name'], $uploadFile)) {
+        if (move_uploaded_file($_FILES['picture']['tmp_name'], $uploadFile)) { //save the file in the specific path
             $imagePath = $uploadFile;
         } else {
             die("Failed to upload picture.");

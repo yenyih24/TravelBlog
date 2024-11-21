@@ -82,6 +82,19 @@ footer {
   border: 1px solid #ddd;
 }
 
+.content-preview {
+  display: -webkit-box; /* 使用 Flexbox 模式限制內容 */
+  -webkit-box-orient: vertical; /* 設置內容排列方向 */
+  overflow: hidden; /* 隱藏超出部分 */
+  text-overflow: ellipsis; /* 添加省略號 */
+  -webkit-line-clamp: 3; /* 限制顯示三行 */
+  line-height: 1.5; /* 設置行高 */
+  max-height: calc(1.5em * 3); /* 設置最大高度（三行的高度） */
+  font-size: 1em; /* 控制字體大小 */
+  margin-bottom: 10px; /* 增加與下一部分的間距 */
+}
+
+
 .page.show h1 {
   border-bottom: 2px solid #66d1cc; /* 标题下分割线 */
   padding-bottom: 10px;
