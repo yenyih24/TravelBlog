@@ -101,6 +101,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
       <div id="operations">
         <input type="submit" value="Edit Post" />
+
+        <a href="index.php">
+          <button class="back_home">Cancel editing</button>
+        </a>
       </div>
     </form>
   </div>
