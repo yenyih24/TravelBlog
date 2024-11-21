@@ -2,7 +2,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom, #ffefef, #e9cfff); /* 浅粉蓝到浅紫粉渐变 */
+  background: linear-gradient(to bottom, #f1f8f8, #6ef5f5); /* 浅粉蓝到浅紫粉渐变 */
   color: #333;
 }
 
