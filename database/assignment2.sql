@@ -36,6 +36,6 @@ CREATE TABLE IF NOT EXISTS `post` (
 ) ENGINE=InnoDB;
 
 INSERT INTO `post`(`user_id`, `title`, `content`, `state`, `country`) VALUES
-(1, 'Test 1', 'Test laaaaaaa', 'Asia', 'Japan');
+(1, 'Title Test 1', 'Content Test1 This is content area', 'Asia', 'Japan');
 
 ALTER TABLE account MODIFY password VARCHAR(255) NOT NULL;
