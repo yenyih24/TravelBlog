@@ -80,7 +80,8 @@
                             <ul>
                                 <li><a class="action" href="<?php echo "blog.php?id=" . $post['post_id']; ?>">View</a></li>
                                 <li><a class="action" href="<?php echo "edit.php?id=" . $post['post_id']; ?>">Edit</a></li>
-                                <li><a class="action" href="<?php echo "delete.php?id=" . $post['post_id']; ?>">Delete</a></li>
+                                <li><a class="action" href="<?php echo "delete.php?post_id=" . $post['post_id']; ?>" onclick="return confirm('Are you sure you want to delete this post?');">Delete</a></li>
+
                             </ul>
                         </div>
                     <?php } ?>
