@@ -14,7 +14,7 @@
 <div class="big-container">
       <aside>
         <ul>
-          <li><a href="create.php">New Post</a></li>
+          <li><a href="createForm.php">New Post</a></li>
         </ul>
 
       </aside>
