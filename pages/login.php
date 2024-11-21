@@ -28,13 +28,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $user = $result->fetch_assoc();
 
-    // 驗證密碼
+    // 驗證密碼（假設密碼未加密，直接比較）
     if ($password === $user['password']) {
-        // 設置 Session 狀態
-        $_SESSION['logged_in'] = true; // 標記為已登入
-        $_SESSION['username'] = $user['username']; // 保存用戶名
+        // 儲存使用者資訊到 Session
+        $_SESSION['user_id'] = $user['id']; // 存儲用戶 ID
+        $_SESSION['username'] = $user['username']; // 存儲用戶名
+        $_SESSION['logged_in'] = true; // 設置已登入狀態
 
-        // 跳轉到首頁
+        // 登入成功後跳轉至首頁
         echo "<script>
                 alert('Login successful! Welcome, {$user['username']}');
                 window.location.href = 'index.php';

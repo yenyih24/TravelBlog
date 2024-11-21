@@ -1,5 +1,13 @@
 <?php
-$userId = 1; // 預設的用戶 ID
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    // 如果未登入，跳轉到登入頁面
+    header("Location: loginForm.php");
+    exit;
+}
+
+$userId = $_SESSION['user_id']; // 從 Session 獲取用戶 ID
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // 接收表單數據
