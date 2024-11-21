@@ -1,38 +1,31 @@
-# Assignment 2
--主頁
-旅遊部落格
-filter: 五大洲
-search function
-建立database, 
+# Group project
 
--user註冊
--郵箱,username,密碼
+Main Page: Travel Blog
 
--blog form: 
-title,state,date,content
+Filter: Five Continents
+Search Function: Set up a database
+User Registration: Email, username, password
 
--留言板(cancel)
-username:
-content
+Blog Form: Title, state, date, content
 
-html, css, JS, PHP,Xampp,database
+Comment Section (canceled): Username, content
 
+Tools:
+HTML, CSS, JS, PHP, XAMPP, database
 
-增加了相關的頁面，目前先用html做整個的布局，因為用php無法直接看serve,
-等做得差不多再重新命名為.php的 file.
+Currently, I’ve added relevant pages. For now, I’m using HTML to design the layout because PHP files cannot be directly previewed on the server. Once the structure is mostly complete, I will rename the files to .php.
 
-目前計畫11/15
-main page
--index.html
--blog.html
--login.html
--sign.html
--edit.html
--newblog.html
+Plan in 11/15:
+Main Pages:
+index.html
+blog.html
+login.html
+sign.html
+edit.html
+newblog.html
+Additional Includes:
 
-另外增加
--header.php
--footer.php
-
-delete功能用javascrip trigger
-edit 跟 delete icon 需要login 才能看到 
+header.php
+footer.php
+The delete function will be triggered by JavaScript.
+Edit and delete icons will only be visible after logging in.
