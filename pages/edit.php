@@ -91,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <div class="content">
           <label for="title">Content : </label>
-          <textarea name="post_content"><?php echo $result['content']; ?></textarea>
+          <textarea name="post_content" required style="width:100%; height:200px"><?php echo $result['content']; ?></textarea>
     </div>
   
       <dl>

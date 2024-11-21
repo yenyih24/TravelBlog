@@ -9,14 +9,7 @@
 
   <body>
   <?php include './headerTB.php'; ?>
-
-  <div class="big-container">
-      <aside>
-        <ul>
-          <li><a href="create.php">New Post</a></li>
-        </ul>
-
-      </aside>
+      
 
   <main>
   <?php
@@ -51,39 +44,30 @@
   $post = mysqli_fetch_assoc($result_set);
   ?>
 
-<main>
+<main class = blogPage>
 <!-- display the blog data -->
   <div id="content">
 
     <div class="page show">
       <h1><?php echo ($post['title']); ?></h1> <!-- 顯示文章標題 -->
       <div class="attributes">
-        <dl>
-          <dt></dt>
-          <dd><?php echo ($post['username']); ?></dd>
-        </dl>
-        <dl>
-          <?php echo ($post['country']); ?> <!-- 顯示國家 -->
-        </dl>
-        <dl>
-          <?php echo ($post['state']); ?> <!-- 顯示state -->
-        </dl>
-        <?php if (!empty($post['image_path'])): ?> <!-- 如果有圖片路徑 -->
-        <dl>
-          <dt>Image</dt>
-          <dd><img src="<?php echo ($post['image_path']); ?>" alt="Post Image"></dd>
-        </dl>
-        <?php endif; ?>
-        <dl>
-          <dt>Content</dt>
-          <dd><?php echo nl2br(htmlspecialchars($post['content'])); ?></dd> <!-- Display the content of the blog -->
-          <!-- nl2br(): 將儲存在資料庫中的換行符號（\n）轉換為 HTML 的 <br> 標籤 -->
-        </dl>
 
-        <dl>
-          <dt>Created At</dt>
-          <dd><?php echo ($post['created_at']); ?></dd> <!-- Display the 顯示建立時間 -->
-        </dl>
+        <div class = 'author'> <p><?php echo ($post['username']); ?></p></div> 
+        
+        <div class = 'country'> <p><?php echo ($post['country']); ?></p></div> <!-- 顯示國家 -->
+
+        <div class = 'state'> <p><?php echo ($post['state']); ?></p></div> <!-- 顯示state -->
+
+        <div class = 'image'> <p><?php if (!empty($post['image_path'])): ?></p></div> <!-- 如果有圖片路徑 -->
+
+        <div class = 'image'> <p><img src="<?php echo ($post['image_path']); ?>" alt="Post Image"></p></div> 
+
+          <?php endif; ?>
+
+        <div class = 'content'> <p><?php echo nl2br(htmlspecialchars($post['content'])); ?></p></div> <!-- Display the content of the blog -->
+        <!-- nl2br(): 將儲存在資料庫中的換行符號（\n）轉換為 HTML 的 <br> 標籤 -->
+           
+        <div class = 'time'> <p><?php echo ($post['created_at']); ?></p></div> <!-- Display the 顯示建立時間 --> 
       </div>
     </div>
   </div>

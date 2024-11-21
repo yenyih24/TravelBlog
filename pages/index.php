@@ -32,7 +32,7 @@
             </form>
         </aside>
 
-        <main>
+        <main class = indexPage>
             <div class="post-container">
                 <?php
                 require_once('../server/database.php');
