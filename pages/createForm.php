@@ -25,18 +25,18 @@ $username = $_SESSION['username'];
 
 <?php include './headerTB.php'; ?>
 
-<div id="content">
-  <div class="New Post">
+<div class="form-container">
     <h1>Create New Post</h1>
 
     <form action='create_post.php' method="POST" enctype="multipart/form-data"> <!-- allow user to upload files (pictures) -->
-      <dl>
-        <dt>Title</dt>
-        <dd><input type="text" name="title" required /></dd>
-      </dl>
+      
+    <div class="textfield">
+          <label for="title">Title : </label>
+          <input type="text" name="title" required />
+    </div>
 
-      <dl>
-        <dt>State</dt>
+    <div class="select">
+    <label for="state">State</label>
         <select name="state" id="state" required>
           <option value="Africa">Africa</option>
           <option value="Asia">Asia</option>
@@ -45,28 +45,28 @@ $username = $_SESSION['username'];
           <option value="South America">South America</option>
           <option value="Oceania">Oceania</option>
         </select>
-      </dl>
+    </div>
 
-      <dl>
-        <dt>Country</dt>
-        <dd><input type="text" name="country" required /></dd>
-      </dl>
+    <div class="country">
+    <label for="country">Country : </label>
+    <input type="text" name="country" required />
+</div>
 
-      <dl>
-        <dt>Picture</dt>
-        <input type="file" name="picture" accept="image/*" /></dd>
-      </dl>
+<div class="picture">
+    <label for="picture">Picture : </label>
+    <input type="file" name="picture" accept="image/*" />
+</div>
 
-      <dl>
-        <dt>Content</dt>
-        <dd><textarea id="post_content" name="post_content" required></textarea></dd>
-      </dl>
-   
+<div class="content">
+    <label for="content">Content : </label>
+    <textarea name="post_content" required style="width:100%; height:200px"></textarea>
+</div>
+
       <div id="operations">
         <input type="submit" value="Create Post" />
       </div>
     </form>
-  </div>
+  
 </div>
 
 <?php include 'footerTB.php'; ?>
