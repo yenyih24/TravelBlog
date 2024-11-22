@@ -2,13 +2,13 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom, #f1f8f8, #6ef5f5); /* 浅粉蓝到浅紫粉渐变 */
+  background: #b9b1a8; 
   color: #333;
 }
 
 /* 页头样式 */
 header {
-  background-color: #66d1cc; /* 浅蓝绿色 */
+  background-color: #627181; 
   padding: 20px;
   text-align: center;
   color: white;
@@ -44,10 +44,8 @@ nav ul li a:hover {
 /* Main content area */
 .indexPage {
   flex: 3;
-  background-color: #fff;
-  padding: 20px;
+
   border-radius: 8px;
-  border: 1px solid #ccc;
 }
 
 
@@ -56,7 +54,7 @@ footer {
   text-align: center;
   margin-top: 20px;
   padding: 10px;
-  background-color: #66d1cc; /* 浅蓝绿色 */
+  background-color: #627181; 
   color: white;
   font-size: 0.9rem;
 }
@@ -65,6 +63,7 @@ footer {
 .big-container {
   display: flex;
   justify-content: center; /* 移除左侧 new post 栏 */
+  
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
@@ -76,7 +75,7 @@ footer {
   margin: 20px auto;
   max-width: 900px; /* 调整内容宽度 */
   padding: 20px;
-  background-color: white;
+  background-color: #e0ddda;
   border-radius: 8px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   border: 1px solid #ddd;
@@ -92,11 +91,12 @@ footer {
   max-height: calc(1.5em * 3); /* 設置最大高度（三行的高度） */
   font-size: 1em; /* 控制字體大小 */
   margin-bottom: 10px; /* 增加與下一部分的間距 */
+  
 }
 
 
 .page.show h1 {
-  border-bottom: 2px solid #66d1cc; /* 标题下分割线 */
+  border-bottom: 2px solid #b9b1a8; /* 标题下分割线 */
   padding-bottom: 10px;
 }
 
@@ -125,7 +125,7 @@ footer {
 .main_link ul li a {
   text-decoration: none;
   color: white;
-  background-color: #66d1cc;
+  background-color: #b9b1a8;
   padding: 5px 10px;
   border-radius: 5px;
 }
@@ -137,9 +137,8 @@ footer {
 /* Filter and new post section */
 aside {
   flex: 1;
-  background-color: #ffffff;
+  background-color: #e0ddda;
   padding: 20px;
-  border: 1px solid #ccc;
   border-radius: 8px;
   margin-right: 20px;
 }
@@ -152,11 +151,11 @@ aside ul {
 
 aside ul li a {
   display: block;
-  background: linear-gradient(to right, #a3d8f4, #b4f0d0);
+  background: #b9b1a8;
   text-align: center;
   padding: 10px;
   border-radius: 8px;
-  color: #333;
+  color: white;
   font-weight: bold;
   text-decoration: none;
   margin-bottom: 15px;
@@ -184,10 +183,10 @@ label {
 
 /* 博客文章框样式 */
 .blog {
-  border: 1px solid #ddd;
+  border: 1px solid #808080;
   padding: 15px;
-  background-color: white;
-  border-radius: 8px;
+  background-color: #e0ddda;
+    border-radius: 8px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
 }
