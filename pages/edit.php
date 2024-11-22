@@ -47,13 +47,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
   }
 
+//在更新數據庫時，檢查圖片路徑是否為空。只有當新圖片被上傳時才更新
+  $imagePathSql = '';
+if ($imagePath) {
+    $imagePathSql = ", image_path = '$imagePath'";
+}
+
   // 更新資料表 post
     //update the table with new information
   $sql = "UPDATE post SET title = '$title', 
             state = '$state', 
             country = '$country', 
-            content = '$content', 
-            image_path = '$imagePath' 
+            content = '$content' 
+            $imagePathSql 
           WHERE post_id = '$id'";
   $result = mysqli_query($db, $sql);
 
