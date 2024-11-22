@@ -131,7 +131,7 @@ footer {
 }
 
 .main_link ul li a:hover {
-  background-color: #4bb3ae;
+  background-color: #808080;
 }
 
 /* Filter and new post section */
@@ -163,7 +163,7 @@ aside ul li a {
 }
 
 aside ul li a:hover {
-  background: #91cfe3;
+  background: #808080;
 }
 
 /* Filter options */
