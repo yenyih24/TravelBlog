@@ -16,9 +16,19 @@
 
     <div class="big-container">
         <aside>
+            <!-- new post link to createForm.php -->
             <ul>
                 <li><a href="createForm.php">New Post</a></li>
             </ul>
+
+             <!-- 搜尋功能 -->
+             <form action="index.php" method="GET">
+                <fieldset>
+                    <legend>Search Author</legend>
+                    <input type="text" name="author" placeholder="Enter author name...">
+                    <button type="submit">Search</button>
+                </fieldset>
+            </form>
 
             <!-- 篩選功能 -->
             <form method="GET" action="index.php">
@@ -33,6 +43,9 @@
                 </fieldset>
                 <button type="submit">Apply Filter</button>
             </form>
+
+           
+
         </aside>
 
         <main class = indexPage>
@@ -44,11 +57,14 @@
 
                 // 檢查是否有選中的篩選條件
                 $filterStates = isset($_GET['state']) && is_array($_GET['state']) ? $_GET['state'] : []; // 從 GET 獲取篩選條件
+                $searchAuthor = isset($_GET['author']) ? mysqli_real_escape_string($db, $_GET['author']) : '';
+
 
                 $sql = "SELECT p.post_id, p.title, p.state, p.country, p.content, p.image_path, p.created_at, p.user_id, a.username ";
                 $sql .= "FROM post p ";
                 $sql .= "JOIN account a ON p.user_id = a.id "; // Join with the account table to fetch username
 
+                // 加入篩選條件
                 if (!empty($filterStates)) {
                     // 將篩選條件中的每個 state 使用 mysqli_real_escape_string 處理
                     $statesIn = implode("','", array_map(function($state) use ($db) {
@@ -56,6 +72,13 @@
                     }, $filterStates));
                     $sql .= "WHERE p.state IN ('$statesIn') ";
                 }
+
+                 // 處理作者搜尋條件
+if (!empty($searchAuthor)) {
+    $authorCondition = "a.username LIKE '%" . mysqli_real_escape_string($db, $searchAuthor) . "%'";
+    // 如果已經有篩選條件，則加上 AND，否則加上 WHERE
+    $sql .= !empty($filterStates) ? "AND $authorCondition " : "WHERE $authorCondition ";
+}
 
                 $sql .= "ORDER BY p.created_at DESC"; // Order by the most recent posts
 
@@ -73,6 +96,7 @@
                             <h1><?php echo htmlspecialchars($post['title']); ?></h1>
                             <h3><?php echo htmlspecialchars($post['state']); ?></h3>
                             <p><?php echo htmlspecialchars($post['country']); ?></p>
+                            <p>作者: <?php echo htmlspecialchars($post['username']); ?></p>
 
                             <!-- 顯示圖片 -->
                             <?php if (!empty($post['image_path'])): ?>
