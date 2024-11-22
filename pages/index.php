@@ -96,7 +96,7 @@ if (!empty($searchAuthor)) {
                             <h1><?php echo htmlspecialchars($post['title']); ?></h1>
                             <h3><?php echo htmlspecialchars($post['state']); ?></h3>
                             <p><?php echo htmlspecialchars($post['country']); ?></p>
-                            <p>作者: <?php echo htmlspecialchars($post['username']); ?></p>
+                            <p>Author: <?php echo htmlspecialchars($post['username']); ?></p>
 
                             <!-- 顯示圖片 -->
                             <?php if (!empty($post['image_path'])): ?>
