@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name=" description " content=" Assignment2 " />
+
     <!-- Add authorship metadata and link CSS and JS files -->
 
     <title>Group Project - Travel blog- Edit page</title>
-    <!-- <script src="script.js" defer></script> -->
     <link rel="stylesheet" type="text/css" href="../css/form.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
 
 </head>
 
 <!-- single page form so we get the id and if we hit post the we update so we will process the update mysqli_query
-and redirect to show page otherwise just display the record. -->
+and redirect to index.php page otherwise just display the record. -->
 <?php
 require_once('../server/database.php');
 $db = db_connect();
