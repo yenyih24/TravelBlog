@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>Delete Post</title>
 </head>
 <body>
@@ -25,43 +24,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sql = "DELETE FROM post WHERE post_id = '$post_id'";
     $result = mysqli_query($db, $sql);
 
-    // 删除成功后跳转回主页面
     if ($result) {
-        header("Location: index.php");
+        echo "<script>alert('Post deleted successfully!'); window.location.href='index.php';</script>";
         exit;
     } else {
-        echo "Error deleting post: " . mysqli_error($db);
+        echo "<script>alert('Error deleting post: " . mysqli_error($db) . "');</script>";
     }
-} else {
-    // 查询文章信息，用于显示确认删除界面
-    $sql = "SELECT * FROM post WHERE post_id = '$post_id'";
-    $result_set = mysqli_query($db, $sql);
-
-    if (!$result_set || mysqli_num_rows($result_set) === 0) {
-        echo "<p>Post not found with ID: $post_id</p>";
-        echo '<a href="index.php">Back to List</a>';
-        exit;
-    }
-
-    $post = mysqli_fetch_assoc($result_set); // 获取文章数据
 }
+
+// 查询文章信息，用于显示确认弹窗
+$sql = "SELECT * FROM post WHERE post_id = '$post_id'";
+$result_set = mysqli_query($db, $sql);
+
+if (!$result_set || mysqli_num_rows($result_set) === 0) {
+    echo "<script>alert('Post not found!'); window.location.href='index.php';</script>";
+    exit;
+}
+
+$post = mysqli_fetch_assoc($result_set); // 获取文章数据
 ?>
 
-<div id="content">
-    <a class="back-link" href="index.php">&laquo; Back to List</a>
-
-    <div class="page delete">
-        <h1>Delete Post</h1>
-        <p>Are you sure you want to delete this post?</p>
-        <p class="item"><?php echo htmlspecialchars($post['title']); ?></p>
-
-        <form action="<?php echo 'delete.php?post_id=' . $post_id; ?>" method="post">
-            <div id="operations">
-                <input type="submit" name="commit" value="Delete Post">
-            </div>
-        </form>
-    </div>
-</div>
-<?php include 'footerTB.php'; ?>
+<!-- 删除确认弹窗'-->
+<script>
+        const confirmed = confirm("Are you sure you want to delete the post ?");
+        if (confirmed) {
+            // 如果用户确认，自动提交表单
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '';
+            document.body.appendChild(form);
+            form.submit();
+        } else {
+            // 用户取消，返回主页
+            window.location.href = 'index.php';
+        }
+</script>
 </body>
 </html>

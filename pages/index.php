@@ -118,7 +118,7 @@ if (!empty($searchAuthor)) {
                                     if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $post['user_id']) { 
                                     ?>
                                         <li><a class="action" href="<?php echo "edit.php?id=" . $post['post_id']; ?>">Edit</a></li>
-                                        <li><a class="action" href="<?php echo "delete.php?post_id=" . $post['post_id']; ?>" onclick="return confirm('Are you sure you want to delete this post?');">Delete</a></li>
+                                        <li><a class="action" href="<?php echo "delete.php?post_id=" . $post['post_id']; ?>">Delete</a></li>
                                     <?php } ?>
                                 </ul>
                             </div>
