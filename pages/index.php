@@ -74,11 +74,11 @@
                 }
 
                  // 處理作者搜尋條件
-if (!empty($searchAuthor)) {
-    $authorCondition = "a.username LIKE '%" . mysqli_real_escape_string($db, $searchAuthor) . "%'";
-    // 如果已經有篩選條件，則加上 AND，否則加上 WHERE
-    $sql .= !empty($filterStates) ? "AND $authorCondition " : "WHERE $authorCondition ";
-}
+                if (!empty($searchAuthor)) {
+                    $authorCondition = "a.username LIKE '%" . mysqli_real_escape_string($db, $searchAuthor) . "%'";
+                    // 如果已經有篩選條件，則加上 AND，否則加上 WHERE
+                    $sql .= !empty($filterStates) ? "AND $authorCondition " : "WHERE $authorCondition ";
+                }
 
                 $sql .= "ORDER BY p.created_at DESC"; // Order by the most recent posts
 
@@ -122,6 +122,7 @@ if (!empty($searchAuthor)) {
                                     <?php } ?>
                                 </ul>
                             </div>
+                            <br><br><br>
                         </div>
                     <?php } ?>
                 </div>
