@@ -85,18 +85,26 @@ if ($imagePath) {
           <input type="text" name="title" value="<?php echo $result['title']; ?>" />
     </div>
 
-    <div class="textfield">
-          <label for="title">State : </label>
-          <input type="text" name="state" value="<?php echo $result['state']; ?>" />
+    <div class="select">
+    <label for="state">State</label>
+        <select name="state" id="state" required value="<?php echo $result['state']; ?>" >
+          <option value="Africa">Africa</option>
+          <option value="Asia">Asia</option>
+          <option value="Europe">Europe</option>
+          <option value="North America">North America</option>
+          <option value="South America">South America</option>
+          <option value="Oceania">Oceania</option>
+        </select>
     </div>
 
+
     <div class="textfield">
-          <label for="title">Country : </label>
+          <label for="country">Country : </label>
           <input type="text" name="country" value="<?php echo $result['country']; ?>" />
     </div>
 
     <div class="content">
-          <label for="title">Content : </label>
+          <label for="post_content">Content : </label>
           <textarea name="post_content" required style="width:100%; height:200px"><?php echo $result['content']; ?></textarea>
     </div>
   
