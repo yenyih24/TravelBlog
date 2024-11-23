@@ -1,3 +1,11 @@
+/* 确保 body 使用 flex 布局 */
+body {
+  display: flex;
+  flex-direction: column; /* 垂直排列元素 */
+  min-height: 100vh; /* 页面高度至少为视口高度 */
+  margin: 0;
+}
+
 /*Set the warning font color*/
 .warning {
   color: rgb(252, 118, 106);
@@ -10,8 +18,10 @@
 
 /* Set the width to 80% of the viewport width, and center the form */
 .form-container {
+    min-height: 100vh;
     width: 70vw; 
     margin: 0 auto; 
+    flex: 1;
   }
 
 .form{
