@@ -1,16 +1,16 @@
-/* 基础样式 */
+/* Basic styles */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: #b9b1a8; 
   color: #333;
-  min-height: 100vh; /* 页面最小高度为视口高度 */
+  min-height: 100vh; /* Set the minimum height of the page to the viewport height */
   display: flex;
-  flex-direction: column; /* 垂直排列元素 */
+  flex-direction: column; /* Arrange elements in a vertical column */
   margin: 0;
 }
 
-/* 页头样式 */
+/* Header styles */
 header {
   background-color: #627181; 
   padding: 20px;
@@ -45,6 +45,7 @@ nav ul li a {
 nav ul li a:hover {
   text-decoration: underline;
 }
+
 /* Main content area */
 .indexPage {
   flex: 3;
@@ -52,7 +53,7 @@ nav ul li a:hover {
 }
 
 
-/* 页脚样式 */
+/* Footer styles */
 footer {
   text-align: center;
   margin-top: 20px;
@@ -62,10 +63,10 @@ footer {
   font-size: 0.9rem;
 }
 
-/* 主容器 */
+/* Main container */
 .big-container {
   display: flex;
-  justify-content: center; /* 移除左侧 new post 栏 */
+  justify-content: center; /* Remove the left-side "New Post" sidebar */
   flex: 1;
   padding: 20px;
   max-width: 1200px;
@@ -73,11 +74,11 @@ footer {
   min-height: 100vh;
 }
 
-/* 内容部分样式 */
+/* Content section styles */
 #content {
   flex: 3;
   margin: 20px auto;
-  max-width: 900px; /* 调整内容宽度 */
+  max-width: 900px; /* Adjust content width */
   padding: 20px;
   background-color: #e0ddda;
   border-radius: 8px;
@@ -87,7 +88,7 @@ footer {
 }
 
 .content-preview {
-  display: -webkit-box; /* 使用 Flexbox 模式限制內容 */
+  display: -webkit-box; /* Use Flexbox layout to constrain content */
   -webkit-box-orient: vertical; /* 設置內容排列方向 */
   overflow: hidden; /* 隱藏超出部分 */
   text-overflow: ellipsis; /* 添加省略號 */
@@ -101,14 +102,14 @@ footer {
 
 
 .page.show h1 {
-  border-bottom: 2px solid #b9b1a8; /* 标题下分割线 */
+  border-bottom: 2px solid #b9b1a8; /* Under the title, add a separator line. */
   padding-bottom: 10px;
 }
 
-/* 图片适应文章边框 */
+/* Make the image fit within the article's border. */
 .image img {
-  width: 100%; /* 图片宽度适应文章容器 */
-  height: auto; /* 保持图片比例 */
+  width: 100%; /* Make the image width adjust to the article container. */
+  height: auto; /* Maintain the aspect ratio of the image. */
   border-radius: 8px; /* 图片圆角 */
   display: block;
   margin-top: 15px; /* 图片与上方内容分隔 */
