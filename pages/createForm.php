@@ -1,13 +1,13 @@
 <?php
 session_start();
 
-// 檢查是否登入，否則跳轉到登入頁面
+// Check if the user is logged in; otherwise, redirect to the login page.
 if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
     header("Location: loginForm.php");
     exit;
 }
 
-// 確認用戶名稱
+// Confirm the username of the logged-in user.
 $username = $_SESSION['username'];
 ?>
 

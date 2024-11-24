@@ -25,12 +25,12 @@ INSERT INTO `account` (`id`, `username`, `email`, `password`) VALUES
 CREATE TABLE IF NOT EXISTS `post` (
   `post_id` INT NOT NULL AUTO_INCREMENT,  
   `user_id` INT NOT NULL,                   
-  `title` VARCHAR(255) NOT NULL,              -- 文章標題
-  `content` TEXT NOT NULL,                    -- 文章內容
+  `title` VARCHAR(255) NOT NULL,              
+  `content` TEXT NOT NULL,                  
   `state` ENUM('Africa', 'Asia', 'Europe', 'North America', 'South America', 'Oceania') NOT NULL,
   `country` VARCHAR(50) NOT NULL,
-  `image_path` VARCHAR(255) DEFAULT NULL,     -- 圖片檔案路徑
-  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 文章建立時間
+  `image_path` VARCHAR(255) DEFAULT NULL,    
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
   PRIMARY KEY (`post_id`),                    
   FOREIGN KEY (`user_id`) REFERENCES `account`(`id`) 
 ) ENGINE=InnoDB;

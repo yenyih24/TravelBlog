@@ -1,53 +1,57 @@
 <?php
-session_start();
+session_start(); // Start the session to manage user login information
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Retrieve and sanitize email and password from the POST request
     $email = trim($_POST['email'] ?? '');
     $password = trim($_POST['pass'] ?? '');
 
-    // 驗證數據是否完整
+    // Validate that both email and password are provided
     if (empty($email) || empty($password)) {
         die("<script>alert('Both email and password are required.'); history.back();</script>");
     }
 
-    // 連接資料庫
+    // Connect to the database
     $conn = new mysqli('localhost', 'root', '', 'assignment2');
     if ($conn->connect_error) {
         die("<script>alert('Database connection failed.'); history.back();</script>");
     }
 
-    // 查詢用戶
+    // Query the database for a user with the provided email
     $stmt = $conn->prepare("SELECT * FROM account WHERE email = ?");
-    $stmt->bind_param("s", $email);
+    $stmt->bind_param("s", $email); // Bind the email parameter to the SQL query
     $stmt->execute();
-    $result = $stmt->get_result();
+    $result = $stmt->get_result(); // Get the result of the query
 
+    // Check if the email exists in the database
     if ($result->num_rows === 0) {
         die("<script>alert('No account found with this email.'); history.back();</script>");
     }
 
-    $user = $result->fetch_assoc();
+    $user = $result->fetch_assoc(); // Fetch the user details as an associative array
 
-    // 驗證密碼（假設密碼未加密，直接比較）
+    // Verify the password (assuming plain text comparison)
     if ($password === $user['password']) {
-        // 儲存使用者資訊到 Session
-        $_SESSION['user_id'] = $user['id']; // 存儲用戶 ID
-        $_SESSION['username'] = $user['username']; // 存儲用戶名
-        $_SESSION['logged_in'] = true; // 設置已登入狀態
+        // Store user information in the session
+        $_SESSION['user_id'] = $user['id']; // Save the user ID in the session
+        $_SESSION['username'] = $user['username']; // Save the username in the session
+        $_SESSION['logged_in'] = true; // Set the logged-in status to true
 
-        // 登入成功後跳轉至首頁
+        // Redirect to the main page after successful login
         echo "<script>
                 alert('Login successful! Welcome, {$user['username']}');
                 window.location.href = 'index.php';
               </script>";
-        exit;
+        exit; // Stop further script execution
     } else {
+        // If the password is incorrect, show an error message and return to the previous page
         die("<script>alert('Incorrect password.'); history.back();</script>");
     }
 
-    $stmt->close();
-    $conn->close();
+    $stmt->close(); // Close the prepared statement
+    $conn->close(); // Close the database connection
 } else {
+    // Handle invalid request method (if not POST)
     echo "<script>alert('Invalid request method.'); history.back();</script>";
 }
 ?>
