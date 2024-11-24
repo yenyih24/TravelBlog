@@ -1,11 +1,3 @@
-/* Ensure the body uses flexbox layout */
-body {
-  display: flex;
-  flex-direction: column; /* Align the child elements vertically (column direction) */
-  min-height: 100vh; /* Ensure the body's minimum height is at least 100% of the viewport height */
-  margin: 0;
-}
-
 /*Set the warning font color*/
 .warning {
   color: rgb(252, 118, 106);
@@ -18,10 +10,8 @@ body {
 
 /* Set the width to 70% of the viewport width, and center the form */
 .form-container {
-    min-height: 100vh;
     width: 70vw; 
     margin: 0 auto; 
-    flex: 1;
   }
 
 .form{

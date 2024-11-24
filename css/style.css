@@ -4,10 +4,6 @@ body {
   font-family: Arial, sans-serif;
   background: #b9b1a8; 
   color: #333;
-  min-height: 100vh; /* Set the minimum height of the page to the viewport height */
-  display: flex;
-  flex-direction: column; /* Arrange elements in a vertical column */
-  margin: 0;
 }
 
 /* Header styles */
@@ -57,7 +53,7 @@ nav ul li a:hover {
 footer {
   text-align: center;
   margin-top: 20px;
-  padding: 10px 0;
+  padding: 10px;
   background-color: #627181; 
   color: white;
   font-size: 0.9rem;
@@ -66,12 +62,10 @@ footer {
 /* main container */
 .big-container {
   display: flex;
-  justify-content: center; /* Remove the left-side "New Post" sidebar */
-  flex: 1;
+  justify-content: center; /* 移除左侧 new post 栏 */
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
-  min-height: 100vh;
 }
 
 /* Content section styles */
@@ -84,7 +78,6 @@ footer {
   border-radius: 8px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   border: 1px solid #ddd;
-  min-height: 100vh;
 }
 
 .content-preview {
