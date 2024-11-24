@@ -1,8 +1,8 @@
-/* 确保 body 使用 flex 布局 */
+/* Ensure the body uses flexbox layout */
 body {
   display: flex;
-  flex-direction: column; /* 垂直排列元素 */
-  min-height: 100vh; /* 页面高度至少为视口高度 */
+  flex-direction: column; /* Align the child elements vertically (column direction) */
+  min-height: 100vh; /* Ensure the body's minimum height is at least 100% of the viewport height */
   margin: 0;
 }
 
@@ -16,7 +16,7 @@ body {
     color:blue;
 }
 
-/* Set the width to 80% of the viewport width, and center the form */
+/* Set the width to 70% of the viewport width, and center the form */
 .form-container {
     min-height: 100vh;
     width: 70vw; 
@@ -40,12 +40,4 @@ body {
     width:70%; /* Set the width of the input elements to 50% of their parent container */
     min-height: 1.5em;
     margin:5px 0;
-}
-
-button{
-    background:rgb(104, 198, 236);
-}
-
-.reset{
-    background: rgb(168, 60, 96);
 }
