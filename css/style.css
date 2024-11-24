@@ -63,7 +63,7 @@ footer {
   font-size: 0.9rem;
 }
 
-/* Main container */
+/* main container */
 .big-container {
   display: flex;
   justify-content: center; /* Remove the left-side "New Post" sidebar */
@@ -88,15 +88,15 @@ footer {
 }
 
 .content-preview {
-  display: -webkit-box; /* Use Flexbox layout to constrain content */
-  -webkit-box-orient: vertical; /* 設置內容排列方向 */
-  overflow: hidden; /* 隱藏超出部分 */
-  text-overflow: ellipsis; /* 添加省略號 */
-  -webkit-line-clamp: 3; /* 限制顯示三行 */
-  line-height: 1.5; /* 設置行高 */
-  max-height: calc(1.5em * 3); /* 設置最大高度（三行的高度） */
-  font-size: 1em; /* 控制字體大小 */
-  margin-bottom: 10px; /* 增加與下一部分的間距 */
+  display: -webkit-box; /* Required for -webkit-line-clamp to work */
+  -webkit-box-orient: vertical; /* Set the content arrangement direction */
+  overflow: hidden; /* Hide overflowing content */
+  text-overflow: ellipsis;  /* Add ellipsis for overflowed content */
+  -webkit-line-clamp: 3; /* limiting of the contents of a block to the specified number of lines. */
+  line-height: 1.5; /* Set the line height */
+  max-height: calc(1.5em * 3); /* Set the maximum height (height for three lines) */
+  font-size: 1em; 
+  margin-bottom: 10px; 
   
 }
 
@@ -110,12 +110,12 @@ footer {
 .image img {
   width: 100%; /* Make the image width adjust to the article container. */
   height: auto; /* Maintain the aspect ratio of the image. */
-  border-radius: 8px; /* 图片圆角 */
-  display: block;
-  margin-top: 15px; /* 图片与上方内容分隔 */
+  border-radius: 8px; /* Round the corners of the image */
+  display: block;/* Display the image as a block-level element */
+  margin-top: 15px; /* Add spacing between the image and the content above */
 }
 
-/* 主页面按钮 */
+/* Main page buttons include view, edit, and delete */
 .main_link ul {
   display: flex;
   justify-content: flex-end;
@@ -134,9 +134,9 @@ footer {
   background-color: #b9b1a8;
   padding: 5px 10px;
   border-radius: 5px;
-  border: none; /* 移除按鈕的邊框 */
-  outline: none; /* 移除按鈕的外框 */
-  box-shadow: none; /* 移除任何陰影效果 */
+  border: none; /* Remove the button border */
+  outline: none; /* Remove the button outline */
+  box-shadow: none; /* Remove any shadow effects */
 }
 
 .main_link ul li a:hover, button:hover {
@@ -150,10 +150,9 @@ aside {
   padding: 20px;
   border-radius: 8px;
   margin-right: 20px;
-  height: 500px; /* 固定高度 */
-  position: sticky; /* 使用 sticky 使其在滾動中保持可見 */
-  top: 20px; /* sticky 的起始位置 */
-
+  height: 500px; /* Fixed height */
+  position: sticky; /* Use sticky to keep it visible during scrolling */
+  top: 20px; /* Starting position for sticky */
 }
 
 aside ul {
@@ -195,7 +194,7 @@ label {
   margin: 5px 0;
 }
 
-/* 博客文章框样式 */
+/* Blog post box style */
 .blog {
   padding: 15px;
   background-color: #e0ddda;
@@ -203,50 +202,51 @@ label {
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
 }
-/* 右对齐作者 */
+/* Align author to the right */
 .author {
-  text-align: right; /* 将作者居右 */
-  font-style: italic; /* 设置为斜体 */
-  margin-top: -10px; /* 根据设计适当调整间距 */
-  color: #555; /* 使用较浅的灰色以强调 */
+  text-align: right; /* Align the author text to the right */
+  font-style: italic; /* Set to italic style */
+  margin-top: -10px; /* Adjust spacing as needed based on design */
+  color: #555; /* Use a lighter gray color for emphasis */
 }
 
-/* 右对齐时间 */
+/* Align time to the right */
 .time {
-  text-align: right; /* 将时间居右 */
-  font-size: 0.9rem; /* 调整字体大小 */
-  color: #999; /* 使用浅灰色字体 */
-  margin-top: -10px; /* 与上方元素分隔 */
+  text-align: right; /* Align the time text to the right */
+  font-size: 0.9rem; /* Adjust the font size */
+  color: #999; /* Use a light gray font color */
+  margin-top: -10px; /* Add spacing to separate from the element above */
 }
 
 .country {
-  text-align: left; /* 保持左对齐 */
-  font-weight: bold; /* 加粗字体 */
-  margin-top: 10px;
-}
-/* 国家和洲并排 */
-.state {
-  text-align: left; /* 保持左对齐 */
-  font-weight: bold; /* 加粗字体 */
+  text-align: left; 
+  font-weight: bold; 
   margin-top: 10px;
 }
 
-/* 图片适应文章宽度 */
+
+.state {
+  text-align: left; 
+  font-weight: bold; 
+  margin-top: 10px;
+}
+
+/* Image to fit the width of the article */
 .image img {
-  max-width: 100%; /* 图片宽度不超过容器 */
-  height: auto; /* 保持宽高比例 */
-  border-radius: 5px; /* 增加圆角效果 */
-  margin: 15px 0; /* 图片上下增加间距 */
+  max-width: 100%; /* Ensure the image width does not exceed the container's width */
+  height: auto; /* Maintain the aspect ratio of the image */
+  border-radius: 5px; /* Add rounded corners to the image */
+  margin: 15px 0; 
 }
 
 .form-container {
-  flex: 3;
-  margin: 20px auto 0 auto; /* 頂部20px，下方無多餘空白 */
-  max-width: 900px; /* 调整内容宽度 */
+  flex: 3; /* The element takes up 3 parts of available space in a flex container */
+  margin: 20px auto 0 auto; 
+  max-width: 900px; /* Restrict the maximum width of the container to 900px */
   padding: 20px;
   background-color: #e0ddda;
   border-radius: 8px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   border: 1px solid #ddd;
-  min-height: 100vh;
+  min-height: 100vh;/* Set the minimum height to 100% of the viewport height */
 }
