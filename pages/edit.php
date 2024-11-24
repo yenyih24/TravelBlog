@@ -13,28 +13,29 @@
 
 </head>
 
-<!-- single page form so we get the id and if we hit post the we update so we will process the update mysqli_query
-and redirect to index.php page otherwise just display the record. -->
+<!-- This page allows editing of a blog post by fetching its data using the ID, 
+     processing the update if the form is submitted, and redirecting to the post display page. -->
 <?php
 require_once('../server/database.php');
 $db = db_connect();
 
 include 'headerTB.php' ;
-if (!isset($_GET['id'])) { //check if we get the id
-  header("Location:  index.php");
+
+if (!isset($_GET['id'])) { // Check if the post ID is passed in the URL
+  header("Location:  index.php"); // Redirect to the index page if no ID is found
 }
-$id = $_GET['id'];
+$id = $_GET['id']; // Get the post ID
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-  //access the employee information
+  // Access the posted data and clean it before updating the database
   $title = mysqli_real_escape_string($db, $_POST['title']) ;
   $state = mysqli_real_escape_string($db, $_POST['state']) ;
   $country = mysqli_real_escape_string($db, $_POST['country']) ;
   $content = mysqli_real_escape_string($db, $_POST['post_content']) ;
   $imagePath = null;
 
-
+// Check if an image file is uploaded and handle the upload
   if (isset($_FILES['picture']) && $_FILES['picture']['error'] == UPLOAD_ERR_OK) {
     $uploadDir = 'uploads/images/';
     $fileName = basename($_FILES['picture']['name']);
@@ -47,14 +48,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
   }
 
-//在更新數據庫時，檢查圖片路徑是否為空。只有當新圖片被上傳時才更新
+// Update the image path in the database only if a new image was uploaded
   $imagePathSql = '';
 if ($imagePath) {
     $imagePathSql = ", image_path = '$imagePath'";
 }
 
-  // 更新資料表 post
-    //update the table with new information
+// Update the post in the database with the new values
   $sql = "UPDATE post SET title = '$title', 
             state = '$state', 
             country = '$country', 
@@ -63,21 +63,22 @@ if ($imagePath) {
           WHERE post_id = '$id'";
   $result = mysqli_query($db, $sql);
 
-  // 重新導向至顯示頁面
+  // Redirect to the updated post page
   header("Location: blog.php?post_id=$id");
   exit;
 } else {
-  // 顯示目前的 post 資訊
+  //If the form was not submitted, display the current post data for editing
   $sql = "SELECT * FROM post WHERE post_id='$id'";
   $result_set = mysqli_query($db, $sql);
   $result = mysqli_fetch_assoc($result_set);
 }
 ?>
 
+<!-- Form to edit the post -->
 <div class="form-container">
 
     <h1>Edit Post</h1>
-
+<!-- The form submits to the same page with the current post ID for updating -->
     <form action="<?php echo 'edit.php?id=' . $result['post_id']; ?>" method="post" enctype="multipart/form-data" >
 
     <div class="textfield">
@@ -112,10 +113,11 @@ if ($imagePath) {
         <dt>Picture</dt>
         <dd><input type="file" name="picture" accept="image/*" /></dd>
       </dl>
-
+<!-- Submit button to update the post -->
       <div id="operations">
         <input type="submit" value="Edit Post" />
-
+        
+        <!-- Link to cancel editing and go back to the homepage -->
         <a href="index.php">
           <button class="back_home">Cancel editing</button>
         </a>
