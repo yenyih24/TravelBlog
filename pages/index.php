@@ -21,8 +21,8 @@
                 <li><a href="createForm.php">New Post</a></li>
             </ul>
 
-             <!-- Search form to find posts by author -->
-             <form action="index.php" method="GET">
+            <!-- Search form to find posts by author -->
+            <form action="index.php" method="GET">
                 <fieldset>
                     <legend>Search Author</legend>
                     <input type="text" name="author" placeholder="Enter author name...">
@@ -108,7 +108,7 @@
                                 <?php echo nl2br(htmlspecialchars($post['content'])); ?>
                             </div>
 
-                             <!-- Action links: View, Edit, Delete -->
+                            <!-- Action links: View, Edit, Delete -->
                             <div class="main_link">
                                 <ul>
                                     <!-- View link available to all users -->

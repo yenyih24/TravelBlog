@@ -14,7 +14,7 @@
 </head>
 
 <!-- This page allows editing of a blog post by fetching its data using the ID, 
-     processing the update if the form is submitted, and redirecting to the post display page. -->
+processing the update if the form is submitted, and redirecting to the post display page. -->
 <?php
 require_once('../server/database.php');
 $db = db_connect();
@@ -113,7 +113,7 @@ if ($imagePath) {
         <dt>Picture</dt>
         <dd><input type="file" name="picture" accept="image/*" /></dd>
       </dl>
-<!-- Submit button to update the post -->
+      <!-- Submit button to update the post -->
       <div id="operations">
         <input type="submit" value="Edit Post" />
         

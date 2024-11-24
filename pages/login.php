@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "<script>
                 alert('Login successful! Welcome, {$user['username']}');
                 window.location.href = 'index.php';
-              </script>";
+            </script>";
         exit; // Stop further script execution
     } else {
         // If the password is incorrect, show an error message and return to the previous page
