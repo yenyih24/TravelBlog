@@ -17,9 +17,9 @@ CREATE TABLE IF NOT EXISTS `account` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 INSERT INTO `account` (`id`, `username`, `email`, `password`) VALUES
-(1, 'Roland Mendel', 'aAaAaAaA@gmail.com', 'aAaAaAaA'),
-(2, 'Victoria Ashworth', 'bBbBbBbB@gmail.com', 'bBbBbBbB'),
-(3, 'Martin Blank', 'cCcCcCcC@gmail.com', 'cCcCcCcC');
+(1, 'Yen-Yi Hsu', 'hsu00026@algonquinlive.com', 'aaaaaaa'),
+(2, 'Chang Hsin Yu', 'chan0591@algonquinlive.com', 'bbbbbb'),
+(3, 'Xiaoxi Yang', 'yang0407@algonquinlive.com', 'cccccc');
 
 
 CREATE TABLE IF NOT EXISTS `post` (
@@ -36,6 +36,6 @@ CREATE TABLE IF NOT EXISTS `post` (
 ) ENGINE=InnoDB;
 
 INSERT INTO `post`(`user_id`, `title`, `content`, `state`, `country`) VALUES
-(1, 'Title Test 1', 'Content Test1 This is content area', 'Asia', 'Japan');
+(1, 'Title This is blog title', 'Content Test1 This is content area', 'North America', 'Ottawa');
 
 ALTER TABLE account MODIFY password VARCHAR(255) NOT NULL;
