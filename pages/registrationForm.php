@@ -23,7 +23,7 @@
         <h1>Customer Registration Form</h1>
         <hr>
 
-        <form name="registration" action="registration.php"  method="post" onsubmit="return validate();">
+        <form name="registration" action="registration.php"  method="post" novalidate="novalidate" onsubmit="return validate();">
             
             <div class="textfield">
                 <label for="email">Email Address: </label>
