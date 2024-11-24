@@ -18,8 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die("Passwords do not match."); // Exit the script if passwords are different
     }
 
-    // At this point, passwords match; hash the password for security
-    $hashedPassword = $password; // In production, use password_hash() for secure password storage
+
 
     // Connect to the database
     $conn = new mysqli('localhost', 'root', '', 'assignment2'); // Create a new database connection
@@ -42,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!$stmt) {
         die("Prepare statement failed: " . $conn->error); // Exit if the query preparation fails
     }
-    $stmt->bind_param("sss", $username, $email, $hashedPassword); // Bind the input parameters to the query
+    $stmt->bind_param("sss", $username, $email, $password); // Bind the input parameters to the query
 
     if ($stmt->execute()) {
         // If the query is successful, redirect the user to the login page with a success message
