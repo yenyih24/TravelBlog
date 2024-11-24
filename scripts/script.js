@@ -1,10 +1,11 @@
-// Select individual form elements by their IDs and assign them to variables for easier access
+
 var validate;
 document.addEventListener("DOMContentLoaded", () => {
-  // 確保 DOM 元素已加載完成後再執行
+  // Ensure the DOM elements are fully loaded before executing the script
   console.log("DOM fully loaded and parsed.");
 
-  // 你的表單驗證代碼
+  // Select elements from the DOM using CSS selectors.
+  // Select individual form elements by their IDs and assign them to variables for easier access
   let emailInput = document.querySelector("#email");
   let loginInput = document.querySelector("#username");
   let passInput = document.querySelector("#password");
@@ -12,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let newsletter = document.querySelector("#newsletter");
   let termInput = document.querySelector("#terms");
 
-  // 檢查表單元素是否存在，避免執行後續操作時出錯
+ // Check whether the form element exists to avoid errors when performing subsequent operations
   if (!emailInput || !loginInput || !passInput || !pass2Input || !termInput) {
     console.error("Form elements not found. Check the DOM structure.");
     return;
