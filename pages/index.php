@@ -65,7 +65,8 @@
 
                 // Add filters for selected states
                 if (!empty($filterStates)) {
-                // Use mysqli_real_escape_string to process each state in the filter conditions                    $statesIn = implode("','", array_map(function($state) use ($db) {
+                // Use mysqli_real_escape_string to process each state in the filter conditions                    
+                $statesIn = implode("','", array_map(function($state) use ($db) {
                         return mysqli_real_escape_string($db, $state);
                     }, $filterStates));
                     $sql .= "WHERE p.state IN ('$statesIn') ";
