@@ -10,8 +10,8 @@
 
 <body>
     <?php 
-    session_start();
-    include 'headerTB.php'; 
+    session_start(); // Start the session to manage user login and session data
+    include 'headerTB.php'; // Include the header for consistent site navigation
     ?>
 
     <div class="big-container">
@@ -21,7 +21,7 @@
                 <li><a href="createForm.php">New Post</a></li>
             </ul>
 
-             <!-- 搜尋功能 -->
+             <!-- Search form to find posts by author -->
              <form action="index.php" method="GET">
                 <fieldset>
                     <legend>Search Author</legend>
@@ -30,7 +30,7 @@
                 </fieldset>
             </form>
 
-            <!-- 篩選功能 -->
+            
             <form method="GET" action="index.php">
                 <fieldset>
                     <legend>Filter by State</legend>
@@ -49,41 +49,40 @@
         <main class="indexPage">
             <div class="post-container">
             <?php
-                require_once('../server/database.php');
+                require_once('../server/database.php'); // Include database connection file
 
-                // Establish a database connection
+                // Connect to the database
                 $db = db_connect();
 
-                // 檢查是否有選中的篩選條件
-                $filterStates = isset($_GET['state']) && is_array($_GET['state']) ? $_GET['state'] : []; // 從 GET 獲取篩選條件
-                $searchAuthor = isset($_GET['author']) ? mysqli_real_escape_string($db, $_GET['author']) : '';
+                // Fetch filter and search criteria from the GET request
+                $filterStates = isset($_GET['state']) && is_array($_GET['state']) ? $_GET['state'] : []; // Filter states
+                $searchAuthor = isset($_GET['author']) ? mysqli_real_escape_string($db, $_GET['author']) : ''; // Search author
 
-
+                // Base SQL query to fetch posts and associated author information
                 $sql = "SELECT p.post_id, p.title, p.state, p.country, p.content, p.image_path, p.created_at, p.user_id, a.username ";
                 $sql .= "FROM post p ";
                 $sql .= "JOIN account a ON p.user_id = a.id ";
 
-                // 加入篩選條件
+                // Add filters for selected states
                 if (!empty($filterStates)) {
-                    // 將篩選條件中的每個 state 使用 mysqli_real_escape_string 處理
-                    $statesIn = implode("','", array_map(function($state) use ($db) {
+                // Use mysqli_real_escape_string to process each state in the filter conditions                    $statesIn = implode("','", array_map(function($state) use ($db) {
                         return mysqli_real_escape_string($db, $state);
                     }, $filterStates));
                     $sql .= "WHERE p.state IN ('$statesIn') ";
                 }
 
-                 // 處理作者搜尋條件
+                 // Add search condition for author
                 if (!empty($searchAuthor)) {
                     $authorCondition = "a.username LIKE '%" . mysqli_real_escape_string($db, $searchAuthor) . "%'";
-                    // 如果已經有篩選條件，則加上 AND，否則加上 WHERE
                     $sql .= !empty($filterStates) ? "AND $authorCondition " : "WHERE $authorCondition ";
                 }
 
                 // Order results by creation time (most recent first)
                 $sql .= "ORDER BY p.created_at DESC";
 
-                $result_set = mysqli_query($db, $sql);
+                $result_set = mysqli_query($db, $sql);// Execute the query
 
+                 // Check if the query execution was successful
                 if (!$result_set) {
                     die("Database query failed: " . mysqli_error($db));
                 }
@@ -97,19 +96,19 @@
                             <p><?php echo htmlspecialchars($post['country']); ?></p>
                             <p>Author: <?php echo htmlspecialchars($post['username']); ?></p>
 
-                            <!-- 顯示圖片 -->
+                            <!-- Display the post image if it exists -->
                             <?php if (!empty($post['image_path'])): ?>
                                 <div class="image-container">
                                     <img src="<?php echo htmlspecialchars($post['image_path']); ?>" alt="Post Image" width="300">
                                 </div>
                             <?php endif; ?>
 
-                            <!-- 限制內容只顯示三行 -->
+                            <!-- Display a preview of the post content -->
                             <div class="content-preview">
                                 <?php echo nl2br(htmlspecialchars($post['content'])); ?>
                             </div>
 
-                            <!-- 檢查是否是作者 -->
+                             <!-- Action links: View, Edit, Delete -->
                             <div class="main_link">
                                 <ul>
                                     <!-- View link available to all users -->
