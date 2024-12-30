@@ -1,1 +1,1 @@
-![blog picture-sign in page](picture/Screenshot 2024-12-29 235018.png)
+![blog picture-sign in page](https://github.com/yenyih24/TravelBlog/blob/main/picture/Screenshot%202024-12-29%20235018.png)
