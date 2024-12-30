@@ -52,3 +52,5 @@ A simple travel blog website with functionality for filtering, user registration
 ---
 
 Created with passion for exploring the world! 🌍
+
+You can find out more picture in [blogPicture.md](https://github.com/yenyih24/TravelBlog/blob/main/picture/blogPicture.md)
