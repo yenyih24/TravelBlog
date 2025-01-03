@@ -1,9 +1,10 @@
 # Travel Blog Project
+This project focuses on developing a travel blog platform which combines backend database functionality with a user-friendly interface to create an interactive blogging experience. 
 
 A simple travel blog website with functionality for filtering, user registration, and blog management.
 
 ## Features
-- **Main Page**: Displays travel blogs with a filter for five continents.
+- **Main Page**: Displays travel blogs. The link to user login, and the funtion of search and filter
 - **Search Function**: Integrates a database to support content filtering.
 - **User Registration**: Users can register with their email, username, and password.
 - **Blog Form**: Allows users to create blogs with the following fields:
@@ -19,35 +20,20 @@ A simple travel blog website with functionality for filtering, user registration
 ## Tools & Technology
 - **Frontend**: HTML, CSS, JavaScript
 - **Backend**: PHP
-- **Database**: Managed with XAMPP (Apache, MySQL)
+- **Database**: Managed with XAMPP
 - **Development Environment**: XAMPP for local server setup.
 
-## Current Progress
-- Relevant pages have been created using HTML:
-  - `index.html`
-  - `blog.html`
-  - `login.html`
-  - `sign.html`
-  - `edit.html`
-  - `newblog.html`
-- Pages are being designed with HTML for layout testing, as PHP files cannot be directly previewed on some servers. Once the structure is finalized, files will be converted to `.php`.
+## Relevant pages
+  - `index.php`
+  - `blog.php`
+  - `login.php`
+  - `registration.php`
+  - `edit.php`
+  - `create_post.php`
 
-## Plan (as of 11/15)
-- **Main Pages**:
-  - `index.html`
-  - `blog.html`
-  - `login.html`
-  - `sign.html`
-  - `edit.html`
-  - `newblog.html`
 - **Additional Includes**:
   - `header.php`
   - `footer.php`
-
-## Future Improvements
-- Complete backend integration with PHP and MySQL.
-- Finalize the edit and delete functionalities for logged-in users.
-- Enhance responsiveness and styling.
 
 ---
 
